@@ -1,0 +1,187 @@
+---
+const newsItems = [
+	{
+		title: "Understanding XR-Supported Creative Collaboration through a Domain-Specific Lens",
+		date: "2025",
+		category: "Publication",
+		description: "Poster presentation at HCIK 2025"
+	},
+	{
+		title: "Techno-Art Capstone Project Grand Prize",
+		date: "2022",
+		category: "Award",
+		description: "Recognized for excellence in technology and art integration"
+	},
+	{
+		title: "Underwood Inside Program Scholarship",
+		date: "2020",
+		category: "Recognition",
+		description: "Selected for interdisciplinary mentorship sessions"
+	},
+	{
+		title: "Social Impact Bootcamp in Tanzania",
+		date: "2019",
+		category: "Impact",
+		description: "Designed solutions using design thinking methodology to address women's hygiene issues"
+	}
+];
+---
+
+<section id="news" class="news-section">
+	<div class="container">
+		<div class="section-header reveal">
+			<span class="pill-label">News & Recognition</span>
+		</div>
+
+		<div class="section-heading-row reveal">
+			<div class="heading-col">
+				<h2>AWARDS & ACHIEVEMENTS</h2>
+			</div>
+			<div class="desc-col">
+				<p>A collection of recognitions, publications, and impactful projects.</p>
+			</div>
+		</div>
+
+		<div class="news-list">
+			{newsItems.map((item, index) => (
+				<div class="news-row reveal" style={`transition-delay: ${index * 100}ms`}>
+					<div class="news-date">
+						<span class="date-text">{item.date}</span>
+					</div>
+					<div class="news-category-col">
+						<span class="news-category">{item.category}</span>
+					</div>
+					<div class="news-content">
+						<h3>{item.title}</h3>
+						<p>{item.description}</p>
+					</div>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.news-section {
+		padding: 6rem 0;
+	}
+
+	.section-header {
+		margin-bottom: 2.5rem;
+	}
+
+	.pill-label {
+		display: inline-block;
+		padding: 0.35rem 1rem;
+		border: 1px solid var(--color-border);
+		border-radius: 100px;
+		font-size: 0.7rem;
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-text-muted);
+	}
+
+	.section-heading-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 3rem;
+		margin-bottom: 4rem;
+	}
+
+	.heading-col h2 {
+		font-family: var(--font);
+		font-size: 2rem;
+		font-weight: 700;
+		color: var(--color-text);
+		letter-spacing: -0.03em;
+		line-height: 1.2;
+		text-transform: uppercase;
+	}
+
+	.desc-col p {
+		font-size: 0.9rem;
+		color: var(--color-text-secondary);
+		line-height: 1.7;
+	}
+
+	.news-list {
+		border-top: 1px solid var(--color-border);
+	}
+
+	.news-row {
+		display: grid;
+		grid-template-columns: 120px 200px 1fr;
+		align-items: center;
+		padding: 2rem 0;
+		border-bottom: 1px solid var(--color-border);
+		gap: 2rem;
+		transition: background-color 0.2s ease;
+	}
+
+	.news-date {
+		display: flex;
+		align-items: center;
+	}
+
+	.date-text {
+		font-family: var(--font);
+		font-size: 0.95rem;
+		color: var(--color-text-muted);
+		font-weight: 500;
+	}
+
+	.news-category-col {
+		display: flex;
+		align-items: center;
+	}
+
+	.news-category {
+		font-size: 0.85rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-text-secondary);
+	}
+
+	.news-content {
+		display: flex;
+		flex-direction: column;
+		gap: 0.3rem;
+	}
+
+	.news-content h3 {
+		font-size: 1.1rem;
+		font-weight: 700;
+		color: var(--color-text);
+	}
+
+	.news-content p {
+		font-size: 0.85rem;
+		color: var(--color-text-secondary);
+		line-height: 1.5;
+	}
+
+	@media (max-width: 768px) {
+		.section-heading-row {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+			margin-bottom: 3rem;
+		}
+
+		.heading-col h2 {
+			font-size: 1.5rem;
+		}
+
+		.news-row {
+			grid-template-columns: 1fr;
+			gap: 0.5rem;
+			padding: 1.5rem 0;
+			align-items: flex-start;
+		}
+
+		.news-content h3 {
+			font-size: 1rem;
+		}
+	}
+</style>

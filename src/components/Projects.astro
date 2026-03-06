@@ -1,0 +1,291 @@
+---
+const projects = [
+	{
+		title: "Mobile iKamper",
+		description: "Strengthening Customer Community and Operational Efficiency",
+		tags: ["Digital Transformation", "UX Strategy"],
+		number: "01",
+		color: "#FF5B2C",
+		locked: true,
+		image: "/images/projects/ikamper.jpg",
+		link: "/projects/ikamper"
+	},
+	{
+		title: "Callavo",
+		description: "Smart networking for B2B Sales",
+		tags: ["Mobile App", "MVP"],
+		number: "02",
+		color: "#86B3FF",
+		locked: false,
+		image: "/images/projects/callavo.jpg"
+	},
+	{
+		title: "Google PlayPass APAC",
+		description: "Localization strategy for the APAC market",
+		tags: ["User Test", "Localization"],
+		number: "03",
+		color: "#FFBD69",
+		locked: true,
+		image: "/images/projects/playpass.jpg",
+		link: "/projects/playpass"
+	},
+	{
+		title: "Megazone PoPs",
+		description: "SaaS Management Platform",
+		tags: ["User Research", "UI Design"],
+		number: "04",
+		color: "#1A1A1A",
+		locked: true,
+		image: "/images/projects/pops.jpg",
+		link: "/projects/pops"
+	}
+];
+---
+
+<section id="projects" class="projects-section">
+	<div class="container">
+		<div class="section-header reveal">
+			<span class="pill-label">Projects</span>
+		</div>
+		
+		<div class="section-heading-row reveal">
+			<div class="heading-col">
+				<h2>SELECTED PROJECTS</h2>
+			</div>
+			<div class="desc-col">
+				<p>A selection of work across mobile, SaaS, and localization strategy.</p>
+			</div>
+		</div>
+
+		<div class="projects-grid">
+			{projects.map((project, index) => (
+				<a href={project.link || "#"} class={`project-card reveal ${project.locked ? 'locked' : ''}`} style={`transition-delay: ${index * 100}ms`}>
+					<div class="card-wrapper">
+						<div class="card-image-container">
+							<div class="card-image" style={`background-image: url('${project.image}'); background-size: cover; background-position: center;`}>
+								<div class="card-overlay"></div>
+							</div>
+						</div>
+						<div class="card-content">
+							<div class="card-header">
+								<h3>{project.title}</h3>
+							</div>
+							<p class="card-desc">{project.description}</p>
+							{project.locked && (
+								<span class="link-text locked-text">
+									<svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; margin-right: 4px; vertical-align: middle;">
+										<path d="M19 11H5C3.89543 11 3 11.8954 3 13V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V13C21 11.8954 20.1046 11 19 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+										<path d="M7 11V7C7 5.67392 7.52678 4.40215 8.46447 3.46447C9.40215 2.52678 10.6739 2 12 2C13.3261 2 14.5979 2.52678 15.5355 3.46447C16.4732 4.40215 17 5.67392 17 7V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+									</svg>
+									NDA Protected
+								</span>
+							)}
+						</div>
+					</div>
+				</a>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.projects-section {
+		padding: 6rem 0;
+	}
+
+	.section-header {
+		margin-bottom: 2.5rem;
+	}
+
+	.pill-label {
+		display: inline-block;
+		padding: 0.35rem 1rem;
+		border: 1px solid var(--color-border);
+		border-radius: 100px;
+		font-size: 0.7rem;
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-text-muted);
+	}
+
+	.section-heading-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 3rem;
+		margin-bottom: 4rem;
+	}
+
+	.heading-col h2 {
+		font-family: var(--font);
+		font-size: 2rem;
+		font-weight: 700;
+		color: var(--color-text);
+		letter-spacing: -0.03em;
+		line-height: 1.2;
+		text-transform: uppercase;
+	}
+
+	.desc-col p {
+		font-size: 0.9rem;
+		color: var(--color-text-secondary);
+		line-height: 1.7;
+	}
+
+	.projects-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1px;
+		background-color: var(--color-border);
+		border: 1px solid var(--color-border);
+	}
+
+	.project-card {
+		display: block;
+		text-decoration: none;
+		color: inherit;
+		transition: transform 0.2s ease;
+		background-color: var(--color-bg);
+	}
+
+	.project-card:hover {
+		transform: scale(1.02);
+		z-index: 1;
+	}
+
+	.project-card.locked {
+		cursor: pointer;
+	}
+
+	.project-card.locked:hover {
+		transform: scale(1.02);
+		z-index: 1;
+	}
+
+	.project-card.locked .card-image {
+		filter: grayscale(0.3);
+	}
+
+	.card-wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+		background-color: var(--color-bg);
+	}
+
+	.card-image-container {
+		width: 100%;
+		padding: 1.5rem 1.5rem 0 1.5rem;
+		background-color: var(--color-bg);
+	}
+
+	.card-image {
+		width: 100%;
+		aspect-ratio: 3/2;
+		border-radius: 4px;
+		overflow: hidden;
+		position: relative;
+	}
+
+	.card-overlay {
+		position: absolute;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.1);
+		z-index: 0;
+		transition: background 0.3s ease;
+	}
+
+	.project-card:hover .card-overlay {
+		background: rgba(0, 0, 0, 0);
+	}
+
+	.project-card.locked:hover .card-overlay {
+		background: rgba(0, 0, 0, 0.1);
+	}
+
+	.card-content {
+		display: flex;
+		flex-direction: column;
+		gap: 0.8rem;
+		padding: 1.5rem;
+		position: relative;
+		z-index: 1;
+		background-color: var(--color-bg);
+	}
+
+	.card-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+	}
+
+	.card-header h3 {
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: var(--color-text);
+		letter-spacing: -0.01em;
+	}
+
+	.project-number {
+		font-family: var(--font);
+		font-size: 0.9rem;
+		color: var(--color-text-muted);
+		font-weight: 700;
+	}
+
+	.card-desc {
+		font-size: 0.95rem;
+		color: var(--color-text-secondary);
+		line-height: 1.5;
+	}
+
+	.card-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-top: 0.2rem;
+	}
+
+	.tag-pill {
+		font-size: 0.7rem;
+		padding: 0.2rem 0.6rem;
+		border: 1px solid var(--color-border);
+		border-radius: 100px;
+		color: var(--color-text-secondary);
+	}
+
+	.link-text {
+		display: inline-block;
+		margin-top: 0.5rem;
+		font-size: 0.9rem;
+		font-weight: 500;
+		color: var(--color-text);
+		transition: color 0.2s ease;
+	}
+
+	.link-text.locked-text {
+		display: flex;
+		align-items: center;
+		opacity: 0.8;
+	}
+
+	.project-card:hover .link-text:not(.locked-text) {
+		color: var(--color-text-secondary);
+	}
+
+	@media (max-width: 768px) {
+		.section-heading-row {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+			margin-bottom: 3rem;
+		}
+
+		.projects-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.heading-col h2 {
+			font-size: 1.5rem;
+		}
+	}
+</style>

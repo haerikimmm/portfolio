@@ -1,0 +1,173 @@
+<section id="education" class="education-section">
+	<div class="container">
+		<div class="section-header reveal">
+			<span class="pill-label">Education</span>
+		</div>
+
+		<div class="section-heading-row reveal">
+			<div class="heading-col">
+				<h2>ACADEMIC BACKGROUND</h2>
+			</div>
+			<div class="desc-col">
+				<p>Building a foundation in design thinking, human-computer interaction, and research.</p>
+			</div>
+		</div>
+
+		<div class="education-list">
+			<div class="edu-row reveal">
+				<div class="edu-period">
+					<span class="period-text">Present</span>
+					<span class="current-dot"></span>
+				</div>
+				<div class="edu-degree">
+					<h3>M.S. Industrial Design</h3>
+					<p class="edu-focus">Human-Computer Interaction</p>
+				</div>
+				<div class="edu-school">
+					<span>KAIST</span>
+				</div>
+			</div>
+
+			<div class="edu-row reveal" style="transition-delay: 100ms">
+				<div class="edu-period">
+					<span class="period-text">2017 – 2022</span>
+				</div>
+				<div class="edu-degree">
+					<h3>B.A. Information and Interaction Design</h3>
+					<p class="edu-focus">Underwood International College</p>
+				</div>
+				<div class="edu-school">
+					<span>Yonsei University</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.education-section {
+		padding: 6rem 0;
+	}
+
+	.section-header {
+		margin-bottom: 2.5rem;
+	}
+
+	.pill-label {
+		display: inline-block;
+		padding: 0.35rem 1rem;
+		border: 1px solid var(--color-border);
+		border-radius: 100px;
+		font-size: 0.7rem;
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-text-muted);
+	}
+
+	.section-heading-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 3rem;
+		margin-bottom: 4rem;
+	}
+
+	.heading-col h2 {
+		font-family: var(--font);
+		font-size: 2rem;
+		font-weight: 700;
+		color: var(--color-text);
+		letter-spacing: -0.03em;
+		line-height: 1.2;
+		text-transform: uppercase;
+	}
+
+	.desc-col p {
+		font-size: 0.9rem;
+		color: var(--color-text-secondary);
+		line-height: 1.7;
+	}
+
+	.education-list {
+		border-top: 1px solid var(--color-border);
+	}
+
+	.edu-row {
+		display: grid;
+		grid-template-columns: 1fr 1.5fr 1fr;
+		align-items: center;
+		padding: 2rem 0;
+		border-bottom: 1px solid var(--color-border);
+		gap: 2rem;
+		transition: background-color 0.2s ease;
+	}
+
+	.edu-period {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+	}
+
+	.period-text {
+		font-family: var(--font);
+		font-size: 0.95rem;
+		color: var(--color-text-muted);
+		font-weight: 500;
+	}
+
+	.current-dot {
+		width: 6px;
+		height: 6px;
+		background-color: var(--color-accent-red);
+		border-radius: 50%;
+	}
+
+	.edu-degree h3 {
+		font-size: 1.1rem;
+		font-weight: 700;
+		color: var(--color-text);
+		margin-bottom: 0.3rem;
+	}
+
+	.edu-focus {
+		font-size: 0.85rem;
+		color: var(--color-text-secondary);
+	}
+
+	.edu-school {
+		text-align: right;
+	}
+
+	.edu-school span {
+		font-size: 0.95rem;
+		color: var(--color-text-secondary);
+		font-weight: 500;
+	}
+
+	@media (max-width: 768px) {
+		.section-heading-row {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+			margin-bottom: 3rem;
+		}
+
+		.heading-col h2 {
+			font-size: 1.5rem;
+		}
+
+		.edu-row {
+			grid-template-columns: 1fr;
+			gap: 0.5rem;
+			padding: 1.5rem 0;
+			align-items: flex-start;
+		}
+
+		.edu-school {
+			text-align: left;
+		}
+		
+		.edu-degree h3 {
+			font-size: 1rem;
+		}
+	}
+</style>

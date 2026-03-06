@@ -1,0 +1,194 @@
+<section id="experience" class="experience-section">
+	<div class="container">
+		<div class="section-header reveal">
+			<span class="pill-label">Experience</span>
+		</div>
+
+		<div class="section-heading-row reveal">
+			<div class="heading-col">
+				<h2>WORK EXPERIENCE</h2>
+			</div>
+			<div class="desc-col">
+				<p>A journey through design and research across industry and academia.</p>
+			</div>
+		</div>
+
+		<div class="experience-list">
+			<div class="exp-row reveal">
+				<div class="exp-period">
+					<span class="period-text">Present</span>
+					<span class="current-dot"></span>
+				</div>
+				<div class="exp-role">
+					<h3>M.S. Student Researcher</h3>
+				</div>
+				<div class="exp-company">
+					<a href="https://make.kaist.ac.kr/" target="_blank" rel="noopener noreferrer">KAIST Make Lab <span class="arrow">↗</span></a>
+				</div>
+			</div>
+
+			<div class="exp-row reveal" style="transition-delay: 100ms">
+				<div class="exp-period">
+					<span class="period-text">Aug 2022 – Oct 2024</span>
+				</div>
+				<div class="exp-role">
+					<h3>Product Designer, UX Consultant</h3>
+				</div>
+				<div class="exp-company">
+					<a href="https://www.megazone.com/" target="_blank" rel="noopener noreferrer">Megazonecloud <span class="arrow">↗</span></a>
+				</div>
+			</div>
+
+			<div class="exp-row reveal" style="transition-delay: 200ms">
+				<div class="exp-period">
+					<span class="period-text">Mar 2021 – Jun 2021</span>
+				</div>
+				<div class="exp-role">
+					<h3>UX Research Intern</h3>
+				</div>
+				<div class="exp-company">
+					<a href="https://www.pxd.co.kr/ko" target="_blank" rel="noopener noreferrer">PXD <span class="arrow">↗</span></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.experience-section {
+		padding: 6rem 0;
+	}
+
+	.section-header {
+		margin-bottom: 2.5rem;
+	}
+
+	.pill-label {
+		display: inline-block;
+		padding: 0.35rem 1rem;
+		border: 1px solid var(--color-border);
+		border-radius: 100px;
+		font-size: 0.7rem;
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-text-muted);
+	}
+
+	.section-heading-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 3rem;
+		margin-bottom: 4rem;
+	}
+
+	.heading-col h2 {
+		font-family: var(--font);
+		font-size: 2rem;
+		font-weight: 700;
+		color: var(--color-text);
+		letter-spacing: -0.03em;
+		line-height: 1.2;
+		text-transform: uppercase;
+	}
+
+	.desc-col p {
+		font-size: 0.9rem;
+		color: var(--color-text-secondary);
+		line-height: 1.7;
+	}
+
+	.experience-list {
+		border-top: 1px solid var(--color-border);
+	}
+
+	.exp-row {
+		display: grid;
+		grid-template-columns: 1fr 1.5fr 1fr;
+		align-items: center;
+		padding: 2rem 0;
+		border-bottom: 1px solid var(--color-border);
+		gap: 2rem;
+		transition: background-color 0.2s ease;
+	}
+
+	
+	.exp-period {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+	}
+
+	.period-text {
+		font-family: var(--font);
+		font-size: 0.95rem;
+		color: var(--color-text-muted);
+		font-weight: 500;
+	}
+
+	.current-dot {
+		width: 6px;
+		height: 6px;
+		background-color: var(--color-accent-red);
+		border-radius: 50%;
+	}
+
+	.exp-role h3 {
+		font-size: 1.1rem;
+		font-weight: 700;
+		color: var(--color-text);
+	}
+
+	.exp-company {
+		text-align: right;
+	}
+
+	.exp-company a {
+		font-size: 0.95rem;
+		color: var(--color-text-secondary);
+		text-decoration: none;
+		transition: color 0.2s ease;
+	}
+
+	.exp-company a:hover {
+		color: var(--color-text);
+	}
+
+	.arrow {
+		display: inline-block;
+		font-size: 0.8em;
+		transition: transform 0.2s ease;
+		margin-left: 0.2rem;
+	}
+
+	.exp-company a:hover .arrow {
+		transform: translate(2px, -2px);
+	}
+
+	@media (max-width: 768px) {
+		.section-heading-row {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+			margin-bottom: 3rem;
+		}
+
+		.heading-col h2 {
+			font-size: 1.5rem;
+		}
+
+		.exp-row {
+			grid-template-columns: 1fr;
+			gap: 0.5rem;
+			padding: 1.5rem 0;
+			align-items: flex-start;
+		}
+
+		.exp-company {
+			text-align: left;
+		}
+		
+		.exp-role h3 {
+			font-size: 1rem;
+		}
+	}
+</style>

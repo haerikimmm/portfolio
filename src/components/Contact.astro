@@ -1,0 +1,158 @@
+<section id="contact" class="contact-section">
+	<div class="container">
+		<div class="section-header reveal">
+			<span class="pill-label">Contact</span>
+		</div>
+
+		<div class="section-heading-row reveal">
+			<div class="heading-col">
+				<h2>LET'S CONNECT</h2>
+			</div>
+			<div class="desc-col">
+				<p>I'm always open to discussing new opportunities, collaborations, or just chatting about design and tech.</p>
+			</div>
+		</div>
+
+		<div class="contact-info-row reveal">
+			<div class="contact-cell">
+				<span class="cell-label">Email</span>
+				<a href="mailto:hari0914@gmail.com" class="cell-value">hari0914@gmail.com</a>
+			</div>
+			<div class="contact-cell">
+				<span class="cell-label">Academic</span>
+				<a href="mailto:kimhaeri@kaist.ac.kr" class="cell-value">kimhaeri@kaist.ac.kr</a>
+			</div>
+			<div class="contact-cell">
+				<span class="cell-label">Social</span>
+				<a href="https://www.linkedin.com/in/haeri-kim-6a4398193/" target="_blank" rel="noopener noreferrer" class="cell-value">LinkedIn <span class="arrow">↗</span></a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.contact-section {
+		padding: 6rem 0 8rem;
+	}
+
+	.section-header {
+		margin-bottom: 2.5rem;
+	}
+
+	.pill-label {
+		display: inline-block;
+		padding: 0.35rem 1rem;
+		border: 1px solid var(--color-border);
+		border-radius: 100px;
+		font-size: 0.7rem;
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-text-muted);
+	}
+
+	.section-heading-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 3rem;
+		margin-bottom: 4rem;
+	}
+
+	.heading-col h2 {
+		font-family: var(--font);
+		font-size: 2rem;
+		font-weight: 700;
+		color: var(--color-text);
+		letter-spacing: -0.03em;
+		line-height: 1.2;
+		text-transform: uppercase;
+	}
+
+	.desc-col p {
+		font-size: 0.9rem;
+		color: var(--color-text-secondary);
+		line-height: 1.7;
+	}
+
+	.contact-info-row {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.contact-cell {
+		padding: 2rem 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		border-right: 1px solid var(--color-border);
+	}
+
+	.contact-cell:last-child {
+		border-right: none;
+	}
+
+	.contact-cell:not(:first-child) {
+		padding-left: 2rem;
+	}
+
+	.cell-label {
+		font-size: 0.7rem;
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-text-muted);
+		margin-bottom: 0.5rem;
+	}
+
+	.cell-value {
+		font-size: 0.95rem;
+		color: var(--color-text);
+		text-decoration: none;
+		transition: color 0.2s ease;
+	}
+
+	.cell-value:hover {
+		color: var(--color-accent-red);
+	}
+
+	.arrow {
+		display: inline-block;
+		font-size: 0.8em;
+		transition: transform 0.2s ease;
+	}
+
+	.cell-value:hover .arrow {
+		transform: translate(2px, -2px);
+	}
+
+	@media (max-width: 768px) {
+		.section-heading-row {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+			margin-bottom: 3rem;
+		}
+
+		.heading-col h2 {
+			font-size: 1.5rem;
+		}
+
+		.contact-info-row {
+			grid-template-columns: 1fr;
+		}
+
+		.contact-cell {
+			border-right: none;
+			border-bottom: 1px solid var(--color-border);
+			padding: 1.5rem 0;
+		}
+
+		.contact-cell:not(:first-child) {
+			padding-left: 0;
+		}
+
+		.contact-cell:last-child {
+			border-bottom: none;
+		}
+	}
+</style>

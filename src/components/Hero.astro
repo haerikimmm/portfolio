@@ -1,0 +1,198 @@
+<section class="hero">
+	<div class="container">
+		<div class="hero-content reveal">
+			<div class="hero-grid">
+				
+				<!-- LEFT: Tagline -->
+				<div class="hero-tagline">
+					<h1>
+						UX designer<br>
+						learning to code.<br><br>
+						Bringing research,<br>
+						design, and engineering<br>
+						together.
+					</h1>
+				</div>
+
+				<!-- RIGHT: Rotating Highlights -->
+				<div class="hero-highlights">
+					
+					<div class="highlight-card active" data-index="0">
+						<span class="highlight-label">Currently</span>
+						<p>M.S. Student @ <a href="https://make.kaist.ac.kr/" target="_blank">KAIST Make Lab</a><br>
+						Studying Human-Computer Interaction</p>
+					</div>
+
+					<div class="highlight-card" data-index="1">
+						<span class="highlight-label">Focus Areas</span>
+						<p>Collaborative tools & creative workflows<br>
+						User research meets prototyping</p>
+					</div>
+
+					<div class="highlight-card" data-index="2">
+						<span class="highlight-label">Background</span>
+						<p>Product Designer (2+ years)<br>
+						UX Research Intern @ PXD</p>
+					</div>
+
+					<div class="highlight-card" data-index="3">
+						<span class="highlight-label">Tools & Skills</span>
+						<p>Figma, React, Astro<br>
+						Qualitative research, usability testing</p>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	const cards = document.querySelectorAll('.highlight-card');
+	let currentIndex = 0;
+	
+	// Set initial state ensures strict single active card if HTML is messy
+	// (though HTML starts with only one active)
+	
+	setInterval(() => {
+		// Remove active from current
+		cards[currentIndex].classList.remove('active');
+		
+		// Move to next
+		currentIndex = (currentIndex + 1) % cards.length;
+		
+		// Add active to next
+		cards[currentIndex].classList.add('active');
+	}, 4000);
+</script>
+
+<style>
+	.hero {
+		min-height: 85vh;
+		display: flex;
+		align-items: center;
+		padding: 2rem 0;
+		overflow: hidden; /* Prevent scrollbars during transitions */
+	}
+
+	.hero-content {
+		width: 100%;
+		max-width: 1200px; /* Wider container for split layout */
+		margin: 0 auto;
+	}
+
+	.hero-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 4rem;
+		align-items: center;
+	}
+
+	/* --- LEFT COLUMN: TAGLINE --- */
+	.hero-tagline h1 {
+		font-family: var(--font);
+		font-size: clamp(2.2rem, 4vw, 3.5rem);
+		font-weight: 700;
+		line-height: 1.15;
+		letter-spacing: -0.04em;
+		color: var(--color-text);
+		margin: 0;
+	}
+
+	/* --- RIGHT COLUMN: HIGHLIGHTS --- */
+	.hero-highlights {
+		position: relative;
+		min-height: 200px; /* Ensure height for absolute cards */
+		display: flex;
+		align-items: center;
+	}
+
+	.highlight-card {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		width: 100%;
+		transform: translateY(-50%) translateY(10px); /* Start slightly down */
+		opacity: 0;
+		transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); /* Smooth ease-out */
+		pointer-events: none;
+		
+		background: var(--color-surface, #EDE8E3);
+		border: 1px solid var(--color-border, #D9D3CC);
+		padding: 1.5rem;
+		border-radius: 8px;
+	}
+
+	.highlight-card.active {
+		opacity: 1;
+		transform: translateY(-50%) translateY(0);
+		pointer-events: auto;
+		z-index: 10;
+	}
+
+	.highlight-label {
+		display: block;
+		text-transform: uppercase;
+		font-size: 0.875rem;
+		letter-spacing: 0.1em;
+		color: var(--color-text-secondary);
+		margin-bottom: 0.5rem;
+		font-weight: 600;
+	}
+
+	.highlight-card p {
+		font-family: var(--font-body, sans-serif);
+		font-size: 1.1rem;
+		font-weight: 400;
+		color: var(--color-text);
+		margin: 0;
+		line-height: 1.5;
+	}
+
+	.highlight-card a {
+		color: inherit;
+		text-decoration: underline;
+		text-decoration-color: rgba(0,0,0,0.3);
+		text-underline-offset: 2px;
+		transition: text-decoration-color 0.2s;
+	}
+	
+	.highlight-card a:hover {
+		text-decoration-color: var(--color-text);
+	}
+
+	/* --- RESPONSIVE --- */
+	@media (max-width: 768px) {
+		.hero {
+			min-height: 60vh;
+			align-items: flex-start;
+			padding-top: 6rem; /* More space for nav */
+		}
+
+		.hero-grid {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+
+		.hero-tagline h1 {
+			font-size: clamp(1.8rem, 6vw, 2.2rem);
+		}
+
+		.hero-highlights {
+			min-height: 140px; /* Adjust for mobile content height */
+			width: 100%;
+		}
+
+		.highlight-card {
+			padding: 1.25rem;
+			background: transparent; /* Cleaner look on mobile? Or keep card? prompt says adjust padding */
+			/* Keeping background as per instructions implies consistent card look, but "Clean" implies maybe less boxy on mobile. 
+			   Let's stick to the prompt's request for "subtle styling" generally. */
+		}
+
+		.highlight-card p {
+			font-size: 1rem;
+		}
+	}
+</style>

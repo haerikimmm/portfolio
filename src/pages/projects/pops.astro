@@ -1,0 +1,149 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import PasswordGate from '../../components/PasswordGate.astro';
+---
+
+<Layout title="Megazone PoPs | Haeri Kim">
+	<Nav />
+	<main class="project-page">
+		<div class="container">
+			<a href="/" class="back-link reveal">← Back to projects</a>
+
+			<PasswordGate projectTitle="Megazone PoPs" />
+
+			<div id="protected-content" class="protected-content">
+				<div class="hero-image reveal">
+					<img src="/images/projects/pops.jpg" alt="Megazone PoPs SaaS Management Platform" />
+				</div>
+
+				<div class="project-info reveal">
+					<h1>Megazone PoPs</h1>
+					<p class="description">SaaS Management Platform</p>
+				</div>
+
+				<div class="meta-grid reveal">
+					<div class="meta-item">
+						<span class="meta-label">Client</span>
+						<span class="meta-value">Megazone Cloud</span>
+					</div>
+					<div class="meta-item">
+						<span class="meta-label">Role</span>
+						<span class="meta-value">UI Designer</span>
+					</div>
+					<div class="meta-item">
+						<span class="meta-label">Duration</span>
+						<span class="meta-value">—</span>
+					</div>
+					<div class="meta-item">
+						<span class="meta-label">Work Scope</span>
+						<span class="meta-value">User Research, UI Design</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<Footer />
+</Layout>
+
+<style>
+	.project-page {
+		padding-top: 7rem;
+		padding-bottom: 4rem;
+	}
+
+	.back-link {
+		display: inline-block;
+		font-size: 0.85rem;
+		color: var(--color-text-secondary);
+		margin-bottom: 2.5rem;
+		transition: color 0.2s ease;
+	}
+
+	.back-link:hover {
+		color: var(--color-text);
+	}
+
+	.protected-content {
+		display: none;
+	}
+
+	.hero-image {
+		width: 100%;
+		border-radius: 12px;
+		overflow: hidden;
+		margin-bottom: 3rem;
+	}
+
+	.hero-image img {
+		width: 100%;
+		height: auto;
+		display: block;
+		object-fit: cover;
+		aspect-ratio: 16 / 9;
+	}
+
+	.project-info {
+		margin-bottom: 3rem;
+	}
+
+	.project-info h1 {
+		font-family: var(--font);
+		font-size: 2.5rem;
+		font-weight: 700;
+		color: var(--color-text);
+		letter-spacing: -0.03em;
+		margin-bottom: 0.75rem;
+	}
+
+	.description {
+		font-size: 1.1rem;
+		color: var(--color-text-secondary);
+		line-height: 1.6;
+	}
+
+	.meta-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 1px;
+		background-color: var(--color-border);
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+		overflow: hidden;
+	}
+
+	.meta-item {
+		display: flex;
+		flex-direction: column;
+		gap: 0.4rem;
+		padding: 1.5rem;
+		background-color: var(--color-bg);
+	}
+
+	.meta-label {
+		font-family: var(--font);
+		font-size: 0.7rem;
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-text-muted);
+	}
+
+	.meta-value {
+		font-family: var(--font-body);
+		font-size: 0.95rem;
+		color: var(--color-text);
+		font-weight: 500;
+	}
+
+	@media (max-width: 768px) {
+		.project-info h1 {
+			font-size: 1.75rem;
+		}
+
+		.meta-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+</style>
