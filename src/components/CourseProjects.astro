@@ -1,0 +1,169 @@
+---
+const courseProjects = [
+	{
+		title: "Worldviewer",
+		description: "A Responsive Microscope Interface for Observing and Influencing a Tiny Virtual World",
+		tags: ["HCI", "Interface Design"],
+		image: "/images/courses/Img1 1.png",
+		link: "/projects/worldviewer"
+	}
+];
+---
+
+<section class="projects-section">
+	<div class="container">
+		<div class="section-heading-row">
+			<div class="heading-col">
+				<h2>Course Projects</h2>
+			</div>
+		</div>
+		<div class="projects-grid">
+			{courseProjects.map((project, index) => (
+				<a href={project.link} class="project-card reveal" style={`transition-delay: ${index * 100}ms`}>
+					<div class="card-wrapper">
+						<div class="card-image-container">
+							<div class="card-image" style={`background-image: url('${project.image}'); background-size: cover; background-position: center;`}>
+								<div class="card-overlay"></div>
+							</div>
+						</div>
+						<div class="card-content">
+							{project.tags && (
+								<div class="card-tags">
+									{project.tags.map((tag) => (
+										<span class="tag-pill">{tag}</span>
+									))}
+								</div>
+							)}
+							<div class="card-header">
+								<h3>{project.title}</h3>
+							</div>
+							<p class="card-desc">{project.description}</p>
+						</div>
+					</div>
+				</a>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.projects-section {
+		padding: 5rem 0;
+	}
+
+	.section-heading-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 3rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.heading-col h2 {
+		font-family: 'Vend Sans', sans-serif;
+		font-size: 1.3rem;
+		font-weight: 700;
+		color: var(--color-text);
+		letter-spacing: -0.03em;
+		line-height: 1.2;
+		text-transform: uppercase;
+	}
+
+	.projects-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1px;
+		background-color: var(--color-border);
+		border: 1px solid var(--color-border);
+	}
+
+	.project-card {
+		display: block;
+		text-decoration: none;
+		color: inherit;
+		transition: transform 0.2s ease;
+		background-color: var(--color-bg);
+	}
+
+	.project-card:hover {
+		transform: scale(1.02);
+		z-index: 1;
+	}
+
+	.card-wrapper {
+		display: flex;
+		flex-direction: column;
+		background-color: var(--color-bg);
+	}
+
+	.card-image-container {
+		width: 100%;
+		padding: 1.5rem 1.5rem 0;
+		background-color: var(--color-bg);
+	}
+
+	.card-image {
+		width: 100%;
+		aspect-ratio: 3/2;
+		border-radius: 4px;
+		overflow: hidden;
+		position: relative;
+	}
+
+	.card-overlay {
+		position: absolute;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.1);
+		transition: background 0.3s ease;
+	}
+
+	.project-card:hover .card-overlay {
+		background: rgba(0, 0, 0, 0);
+	}
+
+	.card-content {
+		display: flex;
+		flex-direction: column;
+		gap: 0.8rem;
+		padding: 1.5rem;
+		background-color: var(--color-bg);
+	}
+
+	.card-header h3 {
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: var(--color-text);
+		letter-spacing: -0.01em;
+	}
+
+	.card-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.tag-pill {
+		font-size: 0.65rem;
+		padding: 0.2rem 0.6rem;
+		border: 1px solid var(--color-border);
+		border-radius: 100px;
+		color: var(--color-text-secondary);
+	}
+
+	.card-desc {
+		font-size: 0.95rem;
+		color: var(--color-text-secondary);
+		line-height: 1.5;
+	}
+
+	@media (max-width: 768px) {
+		.section-heading-row {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+			margin-bottom: 3rem;
+		}
+		.projects-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

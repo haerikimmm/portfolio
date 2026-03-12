@@ -1,0 +1,42 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Grind | Haeri Kim">
+	<Nav />
+	<main class="project-page">
+		<div class="container">
+			<a href="/" class="back-link reveal">← Back to projects</a>
+			<div class="project-info reveal">
+				<h1>Grind</h1>
+				<p class="description">Balancing Work and Life for the Flexible Future</p>
+			</div>
+			<div class="meta-grid reveal">
+				<div class="meta-item"><span class="meta-label">Course</span><span class="meta-value">Capstone Project 2022</span></div>
+				<div class="meta-item"><span class="meta-label">Award</span><span class="meta-value">Top Honors</span></div>
+				<div class="meta-item"><span class="meta-label">Team</span><span class="meta-value">Huiji Choi, Haeri Kim, Jiho Um, Jane Cho, Junghyo Kim, Minju Gwak</span></div>
+			</div>
+			<div class="project-content reveal">
+				<p class="project-description">[Project description coming soon]</p>
+			</div>
+		</div>
+	</main>
+	<Footer />
+</Layout>
+
+<style>
+	.project-page { padding-top: 7rem; padding-bottom: 4rem; }
+	.back-link { display: inline-block; font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 2.5rem; }
+	.project-info { margin-bottom: 3rem; }
+	.project-info h1 { font-family: var(--font); font-size: 2.5rem; font-weight: 700; color: var(--color-text); letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+	.description { font-size: 1.1rem; color: var(--color-text-secondary); line-height: 1.6; }
+	.meta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background-color: var(--color-border); border: 1px solid var(--color-border); border-radius: 8px; overflow: hidden; margin-bottom: 3rem; }
+	.meta-item { display: flex; flex-direction: column; gap: 0.4rem; padding: 1.5rem; background-color: var(--color-bg); }
+	.meta-label { font-family: var(--font); font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-muted); }
+	.meta-value { font-family: var(--font-body); font-size: 0.95rem; color: var(--color-text); font-weight: 500; }
+	.project-content { display: flex; flex-direction: column; gap: 2rem; }
+	.project-description { font-size: 1.1rem; color: var(--color-text-secondary); line-height: 1.7; }
+	@media (max-width: 768px) { .project-info h1 { font-size: 1.75rem; } .meta-grid { grid-template-columns: 1fr; } }
+</style>

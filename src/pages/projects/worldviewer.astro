@@ -1,0 +1,61 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Worldviewer | Haeri Kim">
+	<Nav />
+	<main class="project-page">
+		<div class="container">
+			<a href="/" class="back-link reveal">← Back to projects</a>
+			<div class="project-info reveal">
+				<h1>Worldviewer</h1>
+				<p class="description">A Responsive Microscope Interface for Observing and Influencing a Tiny Virtual World</p>
+			</div>
+			<div class="meta-grid reveal">
+				<div class="meta-item"><span class="meta-label">Course</span><span class="meta-value">Media Interaction Design 2025</span></div>
+				<div class="meta-item"><span class="meta-label">Team</span><span class="meta-value">Guhn Lee, Haeri Kim, Hyungseok Moon</span></div>
+				<div class="meta-item"><span class="meta-label">Tech</span><span class="meta-value">Raspberry Pi 4B, MCP3008, PN532 RFID, Python</span></div>
+				<div class="meta-item"><span class="meta-label">Components</span><span class="meta-value">Rotary Encoder, Joystick, USB Endoscope, Buttons</span></div>
+			</div>
+			<div class="project-content reveal">
+				<img src="/images/courses/Img1 1.png" alt="Worldviewer interface" class="hero-image" />
+				<img src="/images/courses/DSCF5246.JPG" alt="Worldviewer physical setup" class="hero-image" />
+				<p class="project-description">We present Worldviewer, a microscope-like interactive artifact that explores a "giant viewpoint" on virtual worlds: the user remains outside a miniature environment, observes it at multiple scales, and subtly intervenes in its rules and inhabitants. Worldviewer consists of three key components: (1) a microscope-form tangible viewer for miniature worlds, (2) a gaze+manual control scheme organized by temporal granularity (slow/global vs. fast/precise), and (3) an NFC-based "world cartridge" mechanism for rapid world swapping.</p>
+				<h3 class="section-title">Demo Video</h3>
+				<div class="video-section">
+					<video id="demo-video" controls preload="metadata">
+						<source src="/images/courses/worldviewer-demo.mp4" type="video/mp4" />
+						Your browser does not support the video tag.
+					</video>
+				</div>
+			</div>
+		</div>
+	</main>
+	<Footer />
+</Layout>
+
+<script>
+	document.getElementById('demo-video')?.addEventListener('loadedmetadata', function() {
+		this.currentTime = 1;
+	});
+</script>
+
+<style>
+	.project-page { padding-top: 7rem; padding-bottom: 4rem; }
+	.back-link { display: inline-block; font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 2.5rem; }
+	.project-info { margin-bottom: 3rem; }
+	.project-info h1 { font-family: var(--font); font-size: 2.5rem; font-weight: 700; color: var(--color-text); letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+	.description { font-size: 1.1rem; color: var(--color-text-secondary); line-height: 1.6; }
+	.meta-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background-color: var(--color-border); border: 1px solid var(--color-border); border-radius: 8px; overflow: hidden; margin-bottom: 3rem; }
+	.meta-item { display: flex; flex-direction: column; gap: 0.4rem; padding: 1.5rem; background-color: var(--color-bg); }
+	.meta-label { font-family: var(--font); font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-muted); }
+	.meta-value { font-family: var(--font-body); font-size: 0.95rem; color: var(--color-text); font-weight: 500; }
+	.project-content { display: flex; flex-direction: column; gap: 2rem; }
+	.hero-image { width: 100%; border-radius: 12px; }
+	.project-description { font-size: 1.1rem; color: var(--color-text-secondary); line-height: 1.7; }
+	.section-title { font-family: var(--font); font-size: 1.25rem; font-weight: 600; color: var(--color-text); margin-top: 1rem; margin-bottom: 1rem; }
+	.video-section video { width: 100%; border-radius: 12px; aspect-ratio: 16/9; object-fit: cover; }
+	@media (max-width: 768px) { .project-info h1 { font-size: 1.75rem; } .meta-grid { grid-template-columns: repeat(2, 1fr); } }
+</style>

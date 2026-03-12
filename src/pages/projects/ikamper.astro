@@ -2,7 +2,6 @@
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
-import PasswordGate from '../../components/PasswordGate.astro';
 ---
 
 <Layout title="Mobile iKamper | Haeri Kim">
@@ -10,8 +9,6 @@ import PasswordGate from '../../components/PasswordGate.astro';
 	<main class="project-page">
 		<div class="container">
 			<a href="/" class="back-link reveal">← Back to projects</a>
-
-			<PasswordGate projectTitle="Mobile iKamper" />
 
 			<div id="protected-content" class="protected-content">
 
@@ -66,7 +63,6 @@ import PasswordGate from '../../components/PasswordGate.astro';
 	}
 
 	.protected-content {
-		display: none;
 	}
 
 	.hero-image {

@@ -6,24 +6,34 @@ const projects = [
 		tags: ["Digital Transformation", "UX Strategy"],
 		number: "01",
 		color: "#FF5B2C",
-		locked: true,
+		locked: false,
 		image: "/images/projects/ikamper.jpg",
 		link: "/projects/ikamper"
+	},
+	{
+		title: "Worldviewer",
+		description: "A Responsive Microscope Interface for Observing and Influencing a Tiny Virtual World",
+		tags: ["Media Interaction Design"],
+		number: "02",
+		color: "#86B3FF",
+		locked: false,
+		image: "/images/courses/Img1 1.png",
+		link: "/projects/worldviewer"
 	},
 	{
 		title: "Callavo",
 		description: "Smart networking for B2B Sales",
 		tags: ["Mobile App", "MVP"],
-		number: "02",
+		number: "03",
 		color: "#86B3FF",
-		locked: false,
+		locked: true,
 		image: "/images/projects/callavo.jpg"
 	},
 	{
 		title: "Google PlayPass APAC",
 		description: "Localization strategy for the APAC market",
 		tags: ["User Test", "Localization"],
-		number: "03",
+		number: "04",
 		color: "#FFBD69",
 		locked: true,
 		image: "/images/projects/playpass.jpg",
@@ -33,7 +43,7 @@ const projects = [
 		title: "Megazone PoPs",
 		description: "SaaS Management Platform",
 		tags: ["User Research", "UI Design"],
-		number: "04",
+		number: "05",
 		color: "#1A1A1A",
 		locked: true,
 		image: "/images/projects/pops.jpg",
@@ -52,9 +62,6 @@ const projects = [
 			<div class="heading-col">
 				<h2>SELECTED PROJECTS</h2>
 			</div>
-			<div class="desc-col">
-				<p>A selection of work across mobile, SaaS, and localization strategy.</p>
-			</div>
 		</div>
 
 		<div class="projects-grid">
@@ -67,6 +74,13 @@ const projects = [
 							</div>
 						</div>
 						<div class="card-content">
+							{project.tags && (
+								<div class="card-tags">
+									{project.tags.map((tag) => (
+										<span class="tag-pill">{tag}</span>
+									))}
+								</div>
+							)}
 							<div class="card-header">
 								<h3>{project.title}</h3>
 							</div>
@@ -93,8 +107,17 @@ const projects = [
 		padding: 6rem 0;
 	}
 
+	.projects-section::before {
+		content: '';
+		display: block;
+		width: calc(100% - 4rem);
+		max-width: 1200px;
+		margin: 0 auto 1rem auto;
+		border-top: 1px solid var(--color-border);
+	}
+
 	.section-header {
-		margin-bottom: 2.5rem;
+		margin-bottom: 1.5rem;
 	}
 
 	.pill-label {
@@ -113,7 +136,7 @@ const projects = [
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		gap: 3rem;
-		margin-bottom: 4rem;
+		margin-bottom: 2rem;
 	}
 
 	.heading-col h2 {
