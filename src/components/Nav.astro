@@ -1,17 +1,13 @@
 <nav class="nav">
 	<div class="container nav-container">
-		<a href="/portfolio/" class="logo">Haeri Kim</a>
-		
 		<input type="checkbox" id="menu-toggle" class="menu-toggle">
 		<label for="menu-toggle" class="menu-icon">
 			<span class="bar"></span>
 			<span class="bar"></span>
 		</label>
-		
+
 		<div class="links">
-			<a href="/portfolio/#projects" class="nav-link">Projects</a>
-			<a href="/portfolio/#experience" class="nav-link">Experience</a>
-			<a href="/portfolio/#contact" class="nav-link">Get in touch</a>
+			<a href="/portfolio/" class="nav-link">← Back</a>
 		</div>
 	</div>
 </nav>
@@ -48,15 +44,9 @@
 		left: 0;
 		width: 100%;
 		z-index: 100;
-		padding: 0.75rem 0;
+		padding: 1.25rem 0;
 		background: transparent;
-		transition: transform 0.3s ease, padding 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-	}
-
-	.nav.scrolled {
-		padding: 0.4rem 0;
-		background: rgba(114, 47, 55, 0.95);
-		box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+		transition: transform 0.3s ease;
 	}
 
 	.nav.hidden {
@@ -67,23 +57,17 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding-top: 1rem;
-		padding-bottom: 1rem;
-		border: none;
-		border-radius: 100px;
-		padding-left: 1.5rem;
-		padding-right: 1rem;
-		background-color: #722F37;
+		padding: 0;
 	}
 
 	.logo {
 		font-family: var(--font);
-		font-size: 1rem;
-		font-weight: 600;
-		color: #FFFFFF;
+		font-size: 0.9rem;
+		font-weight: 500;
+		color: var(--color-text);
 		letter-spacing: -0.01em;
 	}
-	
+
 	.links {
 		display: flex;
 		gap: 2rem;
@@ -91,37 +75,37 @@
 	}
 
 	.nav-link {
-		font-size: 0.9rem;
+		font-size: 0.85rem;
 		font-weight: 400;
-		color: #FFFFFF;
+		color: var(--color-text-secondary);
 		transition: color 0.2s ease;
 	}
 
 	.nav-link:hover {
-		color: #E0D0D0;
+		color: var(--color-text);
 	}
 
 	/* Mobile Toggle */
 	.menu-toggle {
 		display: none;
 	}
-	
+
 	.menu-icon {
 		display: none;
 		flex-direction: column;
 		justify-content: center;
-		gap: 6px;
+		gap: 5px;
 		width: 24px;
 		height: 24px;
 		cursor: pointer;
 		z-index: 101;
 	}
-	
+
 	.bar {
 		display: block;
-		height: 1.5px;
+		height: 1px;
 		width: 100%;
-		background-color: #FFFFFF;
+		background-color: var(--color-text);
 		transition: all 0.3s ease;
 	}
 
@@ -153,6 +137,10 @@
 			transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 			visibility: hidden;
 			opacity: 0;
+		}
+
+		.nav-link {
+			color: var(--color-text);
 		}
 
 		.menu-toggle:checked ~ .links {

@@ -1,24 +1,508 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Nav from '../components/Nav.astro';
-import Hero from '../components/Hero.astro';
-import Projects from '../components/Projects.astro';
-import Experience from '../components/Experience.astro';
-import Education from '../components/Education.astro';
-import News from '../components/News.astro';
-import Contact from '../components/Contact.astro';
-import Footer from '../components/Footer.astro';
+
+const projects = [
+	{
+		title: "Mobile iKamper",
+		description: "A Mobile App Redesign to Strengthen Community and Operational Efficiency",
+		locked: false,
+		image: "/portfolio/images/projects/ikamper.jpg",
+		link: "/portfolio/projects/ikamper"
+	},
+	{
+		title: "Callavo",
+		description: "A Mobile Networking App for Smarter B2B Sales Conversations",
+		locked: false,
+		image: "/portfolio/images/projects/callavo.jpg",
+		link: "/portfolio/projects/callavo"
+	},
+	{
+		title: "Google PlayPass APAC",
+		description: "A Localization Strategy for Launching Google Play Pass in the Korean Market",
+		locked: true,
+		image: "/portfolio/images/projects/playpass.jpg",
+		link: "/portfolio/projects/playpass"
+	},
+	{
+		title: "Megazone PoPs",
+		description: "A SaaS Management Platform for Cloud Operations and Service Visibility",
+		locked: true,
+		image: "/portfolio/images/projects/pops.jpg",
+		link: "/portfolio/projects/pops"
+	}
+];
+
+const classProjects = [
+	{
+		title: "Worldviewer",
+		description: "A Responsive Microscope Interface for Observing and Influencing a Tiny Virtual World",
+		locked: false,
+		image: "/portfolio/images/courses/Img1 1.png",
+		link: "/portfolio/projects/worldviewer"
+	},
+	{
+		title: "Journi",
+		description: "A Web App for Recording and Revisiting Travel Memories Through an Interactive Map",
+		locked: false,
+		image: "https://img.youtube.com/vi/j8-Ue4wanRU/maxresdefault.jpg",
+		link: "/portfolio/projects/journi"
+	}
+];
 ---
 
 <Layout title="Haeri Kim | Product Designer & Researcher">
-	<Nav />
-	<main>
-		<Hero />
-		<Projects />
-		<Experience />
-		<Education />
-		<News />
-		<Contact />
-	</main>
-	<Footer />
+
+	<!-- NAV -->
+	<nav class="nav">
+		<div class="page-wrap">
+			<div class="nav-box">
+				<div class="tab-group">
+					<a href="#info" class="tab active">Info</a>
+					<a href="#work" class="tab">Work</a>
+					<a href="#contact" class="tab">Contact</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<div class="page">
+
+		<!-- INFO -->
+		<section id="info" class="section info-section">
+			<div class="card">
+				<img src="/portfolio/images/profile.jpg" alt="Haeri Kim" class="profile-img" />
+				<h1 class="hero-text">Haeri Kim is an MS student in Human-Computer Interaction at KAIST Make Lab. She loves turning emerging technologies into tangible experiences that people can see, touch, and understand.</h1>
+			</div>
+		</section>
+
+		<!-- WORK -->
+		<section id="work" class="section">
+			<div class="card">
+				<div class="work-header">
+					<button class="work-tab active" data-tab="selected">Selected Work</button>
+					<button class="work-tab" data-tab="class">Class Projects</button>
+				</div>
+				<div class="proj-list" id="proj-selected">
+					{projects.map(p => (
+						<a href={p.link} class={`proj-card ${p.locked ? 'locked' : ''}`}>
+							<div class="proj-thumb" style={`background-image:url('${p.image}')`}></div>
+							<div class="proj-info">
+								<div class="proj-top">
+									<h3 class="proj-title">{p.title}</h3>
+									{p.locked && <span class="nda">NDA</span>}
+								</div>
+								<p class="proj-desc">{p.description}</p>
+							</div>
+						</a>
+					))}
+				</div>
+				<div class="proj-list" id="proj-class" style="display:none">
+					{classProjects.map(p => (
+						<a href={p.link} class={`proj-card ${p.locked ? 'locked' : ''}`}>
+							<div class="proj-thumb" style={`background-image:url('${p.image}')`}></div>
+							<div class="proj-info">
+								<div class="proj-top">
+									<h3 class="proj-title">{p.title}</h3>
+									{p.locked && <span class="nda">NDA</span>}
+								</div>
+								<p class="proj-desc">{p.description}</p>
+							</div>
+						</a>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- BIO -->
+		<div class="card bio-card">
+			<div class="bio-section">
+				<h4 class="bio-heading">Work Experience</h4>
+				<div class="bio-list">
+					<div class="bio-row">
+						<a href="https://make.kaist.ac.kr/" target="_blank" rel="noopener" class="bio-org">KAIST Make Lab ↗</a>
+						<span class="bio-role">M.S. Student Researcher</span>
+						<span class="bio-period">Present</span>
+					</div>
+					<div class="bio-row">
+						<a href="https://www.megazone.com/" target="_blank" rel="noopener" class="bio-org">Megazonecloud ↗</a>
+						<span class="bio-role">Product Designer, UX Consultant</span>
+						<span class="bio-period">Aug 2022 – Oct 2024</span>
+					</div>
+					<div class="bio-row">
+						<a href="https://www.pxd.co.kr/ko" target="_blank" rel="noopener" class="bio-org">PXD ↗</a>
+						<span class="bio-role">UX Research Intern</span>
+						<span class="bio-period">Mar 2021 – Jun 2021</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="bio-section">
+				<h4 class="bio-heading">Academic Background</h4>
+				<div class="bio-list">
+					<div class="bio-row">
+						<span class="bio-org">KAIST</span>
+						<span class="bio-role">M.S. Industrial Design · Human-Computer Interaction</span>
+						<span class="bio-period">Present</span>
+					</div>
+					<div class="bio-row">
+						<span class="bio-org">Yonsei University</span>
+						<span class="bio-role">B.A. Information and Interaction Design · Underwood International College</span>
+						<span class="bio-period">2017 – 2022</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- CONTACT -->
+		<section id="contact" class="section">
+			<p class="section-label">Contact</p>
+			<div class="c-row">
+				<span class="c-label">Academic</span>
+				<a href="mailto:kimhaeri@kaist.ac.kr" class="c-val">kimhaeri@kaist.ac.kr</a>
+			</div>
+			<div class="c-row">
+				<span class="c-label">LinkedIn</span>
+				<a href="https://www.linkedin.com/in/haeri-kim-6a4398193/" target="_blank" rel="noopener" class="c-val">haeri-kim ↗</a>
+			</div>
+			<div class="c-row">
+				<span class="c-label">Lab</span>
+				<a href="https://make.kaist.ac.kr/" target="_blank" rel="noopener" class="c-val">KAIST Make Lab ↗</a>
+			</div>
+		</section>
+
+		<!-- FOOTER -->
+		<footer class="footer">
+			<a href="#info" class="back-top">Back to top ↑</a>
+		</footer>
+
+	</div>
+
 </Layout>
+
+<script>
+	document.querySelectorAll('.work-tab').forEach(btn => {
+		btn.addEventListener('click', () => {
+			document.querySelectorAll('.work-tab').forEach(b => b.classList.remove('active'));
+			btn.classList.add('active');
+			const tab = (btn as HTMLElement).dataset.tab;
+			const selected = document.getElementById('proj-selected');
+			const cls = document.getElementById('proj-class');
+			if (selected) selected.style.display = tab === 'selected' ? 'flex' : 'none';
+			if (cls) cls.style.display = tab === 'class' ? 'flex' : 'none';
+		});
+	});
+
+	const tabs = document.querySelectorAll<HTMLAnchorElement>('.tab');
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				tabs.forEach(t => t.classList.remove('active'));
+				document.querySelector(`.tab[href="#${entry.target.id}"]`)?.classList.add('active');
+			}
+		});
+	}, { threshold: 0.3 });
+	['info','work','contact'].forEach(id => {
+		const el = document.getElementById(id);
+		if (el) observer.observe(el);
+	});
+</script>
+
+<style>
+	/* LAYOUT */
+	.page-wrap {
+		max-width: 1000px;
+		margin: 0 auto;
+		padding: 0 1.25rem;
+	}
+
+	.page {
+		max-width: 1000px;
+		margin: 0 auto;
+		padding: 0 1.25rem;
+	}
+
+	/* NAV */
+	.nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 100;
+		padding: 0.75rem 1rem;
+	}
+
+	.nav-box {
+		background: rgba(255,255,255,0.88);
+		backdrop-filter: blur(14px);
+		-webkit-backdrop-filter: blur(14px);
+		border-radius: 24px;
+		padding: 0.5rem 0.75rem;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+	}
+
+	.tab-group { display: flex; gap: 0.2rem; }
+
+	.tab {
+		padding: 0.3rem 0.9rem;
+		border-radius: 100px;
+		font-family: var(--font-body);
+		font-size: 0.82rem;
+		color: #888;
+		text-decoration: none;
+		transition: all 0.18s ease;
+	}
+
+	.tab.active { background: #00BFFF; color: #fff; }
+
+	/* SECTIONS */
+	.section { padding: 0.5rem 0; }
+
+	.info-section { padding-top: 3.5rem; }
+
+	/* INFO CARD */
+	.card {
+		background: #fff;
+		border-radius: 24px;
+		padding: 1.75rem;
+	}
+
+	.profile-img {
+		width: 240px;
+		height: auto;
+		border-radius: 20px;
+		display: block;
+		margin-bottom: 5rem;
+	}
+
+	.hero-text {
+		font-family: 'Boldonse', sans-serif;
+		font-size: clamp(1.2rem, 2.4vw, 1.75rem);
+		font-weight: 400;
+		line-height: 1.6;
+		letter-spacing: -0.01em;
+		color: var(--color-text);
+		margin-bottom: 2rem;
+		max-width: 80%;
+	}
+
+	/* BIO */
+	.bio-card { margin-top: 0.5rem; }
+
+	.bio-section {
+		margin-top: 0;
+		border-top: 1px solid #EBEBEB;
+		padding-top: 1.5rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.bio-section:first-child { border-top: none; padding-top: 0; }
+
+	.bio-heading {
+		font-family: var(--font-body);
+		font-size: 0.65rem;
+		font-weight: 500;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--color-text-muted);
+		margin-bottom: 1.25rem;
+	}
+
+	.bio-list { display: flex; flex-direction: column; gap: 0.6rem; }
+
+	.bio-row {
+		display: grid;
+		grid-template-columns: 2fr 1fr 1fr;
+		align-items: baseline;
+		gap: 1rem;
+		font-family: var(--font-body);
+		font-size: 0.82rem;
+	}
+
+	.bio-role { color: var(--color-text); }
+	.bio-org {
+		color: var(--color-text-secondary);
+		text-decoration: none;
+		transition: color 0.2s;
+	}
+	.bio-org:hover { color: var(--color-text); }
+	.bio-period { color: var(--color-text-muted); text-align: right; }
+
+	.work-header {
+		display: flex;
+		gap: 1.2rem;
+		margin-bottom: 1.25rem;
+	}
+
+	.work-tab {
+		font-family: var(--font-body);
+		font-size: 0.65rem;
+		font-weight: 500;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: #CCCCCC;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0;
+		transition: color 0.15s;
+	}
+
+	.work-tab.active {
+		color: #555555;
+	}
+
+	.hidden { display: none; }
+
+	/* WORK */
+	.section-label {
+		font-family: var(--font-body);
+		font-size: 0.7rem;
+		font-weight: 500;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--color-text-muted);
+		margin: 1.25rem 0 0.6rem;
+	}
+
+	.proj-list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.6rem;
+	}
+
+	.proj-card {
+		display: flex;
+		gap: 1.25rem;
+		align-items: flex-start;
+		padding: 0.6rem;
+		background: #F5F5F5;
+		border-radius: 16px;
+		text-decoration: none;
+		color: inherit;
+		transition: opacity 0.15s;
+	}
+
+	.proj-card:hover { opacity: 0.75; }
+
+	.proj-card:hover { opacity: 0.75; }
+
+	.proj-thumb {
+		width: 208px;
+		height: 156px;
+		flex-shrink: 0;
+		border-radius: 10px;
+		background-size: cover;
+		background-position: center;
+		background-color: #E8E8E8;
+	}
+
+	.locked .proj-thumb { filter: grayscale(0.5); }
+
+	.proj-info { flex: 1; min-width: 0; padding: 0.5rem 0.5rem 0.5rem 0; display: flex; flex-direction: column; min-height: 156px; }
+
+	.proj-top { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem; }
+
+	.proj-title {
+		font-family: var(--font-body);
+		font-size: 1.15rem;
+		font-weight: 600;
+		color: #333333;
+		line-height: 1.25;
+	}
+
+	.proj-desc {
+		font-family: var(--font-body);
+		font-size: 0.92rem;
+		color: #888888;
+		line-height: 1.55;
+		margin-top: auto;
+		max-width: 85%;
+	}
+
+	.nda {
+		display: inline-block;
+		margin-top: 0.35rem;
+		font-family: var(--font-body);
+		font-size: 0.6rem;
+		color: #BBB;
+		border: 1px solid #DDD;
+		border-radius: 3px;
+		padding: 0.06rem 0.3rem;
+		letter-spacing: 0.05em;
+	}
+
+	/* CONTACT */
+	.c-row {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0.65rem 0;
+		gap: 1rem;
+	}
+
+	.c-label {
+		font-family: var(--font-body);
+		font-size: 0.72rem;
+		color: var(--color-text-muted);
+		flex-shrink: 0;
+	}
+
+	.c-val {
+		font-family: var(--font-body);
+		font-size: 0.82rem;
+		color: var(--color-text);
+		text-decoration: none;
+		transition: color 0.2s;
+	}
+
+	.c-val:hover { color: #00BFFF; }
+
+	/* FOOTER */
+	.footer { padding: 1.5rem 0 3rem; }
+
+	.back-top {
+		font-family: var(--font-body);
+		font-size: 0.75rem;
+		color: var(--color-text-muted);
+		text-decoration: none;
+	}
+
+	.back-top:hover { color: var(--color-text); }
+
+	@media (max-width: 600px) {
+		/* Nav - scroll with page on mobile */
+		.nav { position: static; padding: 0.6rem 0; }
+		.page-wrap { padding: 0 0.75rem; }
+		.page { padding: 0 0.75rem; }
+		.tab { font-size: 0.78rem; }
+		.info-section { padding-top: 0.5rem; }
+
+		/* Card padding */
+		.card { padding: 1rem; }
+
+		/* Hero text */
+		.hero-text { font-size: 0.75rem; max-width: 100%; }
+		.profile-img { width: 150px; margin-bottom: 2rem; }
+
+		/* Project cards: vertical layout */
+		.proj-card { flex-direction: column; gap: 0.6rem; padding: 0.5rem; }
+		.proj-thumb { width: 100%; height: 160px; border-radius: 10px; }
+		.proj-info { min-height: unset; padding: 0.5rem 0.25rem 0.25rem; }
+		.proj-title { font-size: 0.95rem; }
+		.proj-desc { font-size: 0.8rem; max-width: 100%; }
+		.work-tab { font-size: 0.62rem; }
+		.card-heading { font-size: 0.6rem; }
+
+		/* Bio */
+		.bio-row { grid-template-columns: 1fr; gap: 0.1rem; font-size: 0.75rem; }
+		.bio-period { text-align: left; }
+		.bio-heading { font-size: 0.6rem; }
+
+		/* Contact */
+		.c-label { font-size: 0.68rem; }
+		.c-val { font-size: 0.78rem; }
+		.back-top { font-size: 0.7rem; }
+	}
+</style>
