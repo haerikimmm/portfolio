@@ -1,0 +1,83 @@
+<button type="button" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+	<svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+		<path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+	</svg>
+	<svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+		<circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.6"/>
+		<path d="M12 2v2.2M12 19.8V22M2 12h2.2M19.8 12H22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M19.1 4.9l-1.6 1.6M6.5 17.5l-1.6 1.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+	</svg>
+</button>
+
+<script>
+	const root = document.documentElement;
+
+	function syncButtons() {
+		const isDark = root.getAttribute('data-theme') === 'dark';
+		document.querySelectorAll('.theme-toggle').forEach(btn => {
+			btn.setAttribute('aria-pressed', String(isDark));
+			btn.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+			btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+		});
+	}
+
+	document.querySelectorAll('.theme-toggle').forEach(btn => {
+		btn.addEventListener('click', () => {
+			const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+			root.setAttribute('data-theme', next);
+			try { localStorage.setItem('theme', next); } catch (e) {}
+			syncButtons();
+		});
+	});
+
+	// Follow the OS until the visitor picks a theme themselves.
+	window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+		let stored = null;
+		try { stored = localStorage.getItem('theme'); } catch (err) {}
+		if (stored) return;
+		root.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+		syncButtons();
+	});
+
+	syncButtons();
+</script>
+
+<style>
+	.theme-toggle {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 28px;
+		height: 28px;
+		flex-shrink: 0;
+		padding: 0;
+		border: none;
+		border-radius: 100px;
+		background: transparent;
+		color: var(--color-text-muted);
+		cursor: pointer;
+		transition: color 0.2s ease, background-color 0.2s ease;
+	}
+
+	.theme-toggle:hover {
+		color: var(--color-text);
+		background: var(--color-surface);
+	}
+
+	.icon {
+		width: 15px;
+		height: 15px;
+		display: block;
+	}
+
+	.icon-sun {
+		display: none;
+	}
+
+	:global(html[data-theme="dark"]) .icon-sun {
+		display: block;
+	}
+
+	:global(html[data-theme="dark"]) .icon-moon {
+		display: none;
+	}
+</style>

@@ -1,0 +1,93 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+// Paste the YouTube video ID here and the Demo section appears automatically.
+// https://youtu.be/ABC123xyz  ->  "ABC123xyz"
+const youtubeId = 'qGvQYSoElsQ';
+
+// Web edition of the catalogue (page-flip viewer).
+// It initialises from its container's size and fails on wide, short boxes,
+// so .book-embed below stays taller than ~1.4:1.
+const catalogueUrl = 'https://transcendentcontact.vercel.app';
+---
+
+<Layout title="Transcendent Contact | Haeri Kim">
+	<Nav />
+	<main class="project-page">
+		<div class="container">
+			<div class="project-info reveal">
+				<h1>Transcendent Contact</h1>
+				<p class="description">A Catalogue for an AI-Fabricated Exhibition That Reframes Hallucination as Creative Capacity</p>
+			</div>
+			<div class="meta-grid reveal">
+				<div class="meta-item"><span class="meta-label">Course</span><span class="meta-value">Design Project 2026</span></div>
+				<div class="meta-item"><span class="meta-label">Team</span><span class="meta-value">Hyeyeon Seo, Tae-Hyun Lee, Haeri Kim, Minhyeok Seo</span></div>
+				<div class="meta-item"><span class="meta-label">Duration</span><span class="meta-value">3 months</span></div>
+				<div class="meta-item"><span class="meta-label">Models</span><span class="meta-value">Gemini Imagen 3, Nano Banana Pro, Kling 3.0, GPT-5.5, Gemini Pro, Claude Sonnet 4.5</span></div>
+			</div>
+			<div class="project-content reveal">
+				<p class="project-description">Transcendent Contact is a 182-page hardcover catalogue for a museum exhibition that never took place. Its palindromic title, SAW / WAS, divides the book in two. The first half follows the conventions of museum documentation — artist biographies, artwork captions, installation photographs of eighteen works — and presents them as genuine holdings, letting readers build real responses to objects that were never made. Midway through, the book reveals the exhibition as a fiction and turns to the longer history of human and machine hallucination. A closing archive opens up the production itself: the chat logs, the visual errors discarded along the way, and the categories used to group the works.</p>
+				<h3 class="section-title">Catalogue</h3>
+				<img src="/portfolio/images/courses/transcendent-contact-spreads.jpg" alt="Spreads from the Transcendent Contact catalogue" class="hero-image" />
+				<p class="project-description">We treated AI hallucination as a design partner rather than a defect to be corrected. Generative models produced the artworks, the artist personas, the technical specifications, and the curatorial justifications; when a model filled a gap with something unforeseen, we kept it as a creative alternative instead of fixing it. From what came back we derived nine potentials of hallucination — Comforting, Humanizing, Preparing, Immersing, Escaping, Bonding, Restoring, Redefining, and Inspiring — and organized the exhibition around them.</p>
+				<p class="project-description">Authorship stays deliberately unstable throughout. Agency moves along a sequence of generation, curation, encounter, revelation, and re-reading, circulating among creator, tool, curator, and reader rather than settling with any one of them. The unverified, we argue, can function as a form of reality — and hallucination, understood as a capacity rather than an error, widens the conditions under which creative work can happen.</p>
+				<div class="book-embed">
+					<iframe
+						src={catalogueUrl}
+						title="Transcendent Contact catalogue, web edition"
+						loading="lazy"
+					></iframe>
+				</div>
+				<p class="embed-note">
+					<a href={catalogueUrl} target="_blank" rel="noopener">Open the full-screen edition ↗</a>
+				</p>
+				{youtubeId && (
+					<>
+						<h3 class="section-title">Exhibition Introduction</h3>
+						<div class="video-embed">
+							<iframe
+								src={`https://www.youtube-nocookie.com/embed/${youtubeId}`}
+								title="Transcendent Contact exhibition introduction"
+								loading="lazy"
+								allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+								referrerpolicy="strict-origin-when-cross-origin"
+								allowfullscreen
+							></iframe>
+						</div>
+					</>
+				)}
+			</div>
+		</div>
+	</main>
+	<Footer />
+</Layout>
+
+<style>
+	.project-page { padding-top: 7rem; padding-bottom: 4rem; }
+	.project-info { margin-bottom: 3rem; }
+	.project-info h1 { font-family: var(--font); font-size: 2.5rem; font-weight: 700; color: var(--color-text); letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+	.description { font-size: 1.1rem; color: var(--color-text-secondary); line-height: 1.6; }
+	.meta-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background-color: var(--color-border); border: 1px solid var(--color-border); border-radius: 8px; overflow: hidden; margin-bottom: 3rem; }
+	.meta-item { display: flex; flex-direction: column; gap: 0.4rem; padding: 1.5rem; background-color: var(--color-bg); }
+	.meta-label { font-family: var(--font); font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-muted); }
+	.meta-value { font-family: var(--font-body); font-size: 0.95rem; color: var(--color-text); font-weight: 500; }
+	.project-content { display: flex; flex-direction: column; gap: 2rem; }
+	.hero-image { width: 100%; border-radius: 12px; }
+	.video-embed { position: relative; width: 100%; aspect-ratio: 16/9; border-radius: 12px; overflow: hidden; background: var(--color-thumb); }
+	.video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+	.book-embed { position: relative; width: 100%; aspect-ratio: 5/4; min-height: 520px; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-border); background: #FFFFFF; }
+	.book-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+	.embed-note { font-size: 0.8rem; color: var(--color-text-muted); margin-top: -1rem; }
+	.embed-note a { color: var(--color-text-secondary); text-decoration: underline; text-underline-offset: 3px; }
+	.embed-note a:hover { color: var(--color-text); }
+	.project-description { font-size: 0.82rem; color: var(--color-text-secondary); line-height: 1.7; }
+	.section-title { font-family: var(--font); font-size: 1.25rem; font-weight: 600; color: var(--color-text); margin-top: 1rem; margin-bottom: 1rem; }
+	@media (max-width: 768px) {
+		.project-info h1 { font-size: 1.75rem; }
+		.meta-grid { grid-template-columns: repeat(2, 1fr); }
+		/* Narrow screens: the viewer drops to single-page, so give it portrait room */
+		.book-embed { aspect-ratio: 3/4; min-height: 420px; }
+	}
+</style>

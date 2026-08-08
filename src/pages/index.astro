@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
 
 const projects = [
 	{
@@ -41,6 +42,13 @@ const classProjects = [
 		link: "/portfolio/projects/worldviewer"
 	},
 	{
+		title: "Transcendent Contact",
+		description: "A Catalogue for an AI-Fabricated Exhibition That Reframes Hallucination as Creative Capacity",
+		locked: false,
+		image: "/portfolio/images/courses/transcendent-contact.jpg",
+		link: "/portfolio/projects/transcendent-contact"
+	},
+	{
 		title: "Journi",
 		description: "A Web App for Recording and Revisiting Travel Memories Through an Interactive Map",
 		locked: false,
@@ -61,6 +69,7 @@ const classProjects = [
 					<a href="#work" class="tab">Work</a>
 					<a href="#contact" class="tab">Contact</a>
 				</div>
+				<ThemeToggle />
 			</div>
 		</div>
 	</nav>
@@ -98,8 +107,8 @@ const classProjects = [
 				</div>
 				<div class="proj-list" id="proj-class" style="display:none">
 					{classProjects.map(p => (
-						<a href={p.link} class={`proj-card ${p.locked ? 'locked' : ''}`}>
-							<div class="proj-thumb" style={`background-image:url('${p.image}')`}></div>
+						<a href={p.link || undefined} class={`proj-card ${p.locked ? 'locked' : ''}`}>
+							<div class="proj-thumb" style={p.image ? `background-image:url('${p.image}')` : undefined}></div>
 							<div class="proj-info">
 								<div class="proj-top">
 									<h3 class="proj-title">{p.title}</h3>
@@ -232,12 +241,14 @@ const classProjects = [
 	}
 
 	.nav-box {
-		background: #ffffff;
+		background: var(--color-card);
 		border-radius: 24px;
 		padding: 0.5rem 0.75rem;
 		display: flex;
 		align-items: center;
 		justify-content: flex-end;
+		gap: 0.4rem;
+		transition: background-color 0.25s ease;
 	}
 
 	.tab-group { display: flex; gap: 0.2rem; }
@@ -247,23 +258,26 @@ const classProjects = [
 		border-radius: 100px;
 		font-family: var(--font-body);
 		font-size: 0.82rem;
-		color: #888;
+		color: var(--color-text-desc);
 		text-decoration: none;
 		transition: all 0.18s ease;
 	}
 
-	.tab.active { background: #00BFFF; color: #fff; }
+	.tab.active { background: var(--color-accent-cyan); color: var(--color-on-accent); }
 
 	/* SECTIONS */
 	.section { padding: 0.5rem 0; }
 
-	.info-section { padding-top: 3.5rem; }
+	/* Must clear the fixed nav: 0.75rem nav padding + 44px pill = 3.5rem.
+	   Anything less and the white pill sits flush on the white card. */
+	.info-section { padding-top: 5rem; }
 
 	/* INFO CARD */
 	.card {
-		background: #fff;
+		background: var(--color-card);
 		border-radius: 24px;
 		padding: 1.75rem;
+		transition: background-color 0.25s ease;
 	}
 
 	.profile-img {
@@ -290,7 +304,7 @@ const classProjects = [
 
 	.bio-section {
 		margin-top: 0;
-		border-top: 1px solid #EBEBEB;
+		border-top: 1px solid var(--color-divider);
 		padding-top: 1.5rem;
 		margin-bottom: 1.5rem;
 	}
@@ -339,7 +353,7 @@ const classProjects = [
 		font-weight: 500;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
-		color: #CCCCCC;
+		color: var(--color-text-muted);
 		background: none;
 		border: none;
 		cursor: pointer;
@@ -347,8 +361,13 @@ const classProjects = [
 		transition: color 0.15s;
 	}
 
+	.work-tab:hover {
+		color: var(--color-text-secondary);
+	}
+
 	.work-tab.active {
-		color: #555555;
+		color: var(--color-text);
+		font-weight: 600;
 	}
 
 	.hidden { display: none; }
@@ -375,16 +394,18 @@ const classProjects = [
 		gap: 1.25rem;
 		align-items: flex-start;
 		padding: 0.6rem;
-		background: #F5F5F5;
+		background: var(--color-card-muted);
 		border-radius: 16px;
 		text-decoration: none;
 		color: inherit;
-		transition: opacity 0.15s;
+		transition: opacity 0.15s, background-color 0.25s ease;
 	}
 
 	.proj-card:hover { opacity: 0.75; }
 
-	.proj-card:hover { opacity: 0.75; }
+	/* Cards without a detail page yet: no link affordance */
+	.proj-card:not([href]) { cursor: default; }
+	.proj-card:not([href]):hover { opacity: 1; }
 
 	.proj-thumb {
 		width: 208px;
@@ -393,10 +414,11 @@ const classProjects = [
 		border-radius: 10px;
 		background-size: cover;
 		background-position: center;
-		background-color: #E8E8E8;
+		background-color: var(--color-thumb);
+		filter: var(--media-dim);
 	}
 
-	.locked .proj-thumb { filter: grayscale(0.5); }
+	.locked .proj-thumb { filter: grayscale(0.5) var(--media-dim); }
 
 	.proj-info { flex: 1; min-width: 0; padding: 0.5rem 0.5rem 0.5rem 0; display: flex; flex-direction: column; min-height: 156px; }
 
@@ -406,14 +428,14 @@ const classProjects = [
 		font-family: var(--font-body);
 		font-size: 1.15rem;
 		font-weight: 600;
-		color: #333333;
+		color: var(--color-text-title);
 		line-height: 1.25;
 	}
 
 	.proj-desc {
 		font-family: var(--font-body);
 		font-size: 0.92rem;
-		color: #888888;
+		color: var(--color-text-desc);
 		line-height: 1.55;
 		margin-top: auto;
 		max-width: 85%;
@@ -424,8 +446,8 @@ const classProjects = [
 		margin-top: 0.35rem;
 		font-family: var(--font-body);
 		font-size: 0.6rem;
-		color: #BBB;
-		border: 1px solid #DDD;
+		color: var(--color-badge-text);
+		border: 1px solid var(--color-border-subtle);
 		border-radius: 3px;
 		padding: 0.06rem 0.3rem;
 		letter-spacing: 0.05em;
@@ -455,7 +477,7 @@ const classProjects = [
 		transition: color 0.2s;
 	}
 
-	.c-val:hover { color: #00BFFF; }
+	.c-val:hover { color: var(--color-accent-cyan); }
 
 	/* FOOTER */
 	.footer { padding: 1.5rem 0 3rem; }

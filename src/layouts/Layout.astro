@@ -18,6 +18,17 @@ const { title } = Astro.props;
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Boldonse&family=Stack&display=swap" rel="stylesheet">
 		<title>{title}</title>
+		<script is:inline>
+			// Runs before first paint so the page never flashes the wrong theme.
+			(function () {
+				var stored = null;
+				try { stored = localStorage.getItem('theme'); } catch (e) {}
+				var dark = stored
+					? stored === 'dark'
+					: window.matchMedia('(prefers-color-scheme: dark)').matches;
+				document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+			})();
+		</script>
 	</head>
 	<body>
 		<slot />
@@ -25,23 +36,80 @@ const { title } = Astro.props;
 </html>
 <style is:global>
 	:root {
+		color-scheme: light;
+
 		--color-bg: #E3E3E3;
 		--color-dark: #1A1A1A;
 		--color-text: #1A1A1A;
 		--color-text-secondary: #555555;
 		--color-text-muted: #999999;
+		--color-text-faint: #CCCCCC;
+		--color-text-title: #333333;
+		--color-text-desc: #888888;
+		--color-badge-text: #BBBBBB;
 		--color-border: #D9D3CC;
+		--color-border-subtle: #DDDDDD;
+		--color-divider: #EBEBEB;
 		--color-surface: #EDE8E3;
 		--color-white: #FFFFFF;
+
+		--color-card: #FFFFFF;
+		--color-card-muted: #F5F5F5;
+		--color-thumb: #E8E8E8;
+		--color-shadow: rgba(0, 0, 0, 0.1);
 
 		--color-accent-red: #FF5B2C;
 		--color-accent-blue: #86B3FF;
 		--color-accent-yellow: #FFBD69;
+		--color-accent-cyan: #00BFFF;
+		--color-on-accent: #FFFFFF;
+
+		--color-selection-bg: #D6F4FF;
+		--color-selection-text: #1A1A1A;
+
+		/* Kept as a real filter (not `none`) so it composes in shorthand lists */
+		--media-dim: brightness(1);
 
 		--font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 		--font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 		--font-serif: 'Stack', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 		--container-width: 1000px;
+	}
+
+	:root[data-theme="dark"] {
+		color-scheme: dark;
+
+		--color-bg: #121212;
+		--color-dark: #000000;
+		--color-text: #EDEDED;
+		--color-text-secondary: #A8A8A8;
+		--color-text-muted: #7C7C7C;
+		--color-text-faint: #5A5A5A;
+		--color-text-title: #E8E8E8;
+		--color-text-desc: #8C8C8C;
+		--color-badge-text: #6E6E6E;
+		--color-border: #353535;
+		--color-border-subtle: #3A3A3A;
+		--color-divider: #2A2A2A;
+		--color-surface: #262626;
+		--color-white: #1C1C1C;
+
+		--color-card: #1C1C1C;
+		--color-card-muted: #242424;
+		--color-thumb: #2E2E2E;
+		--color-shadow: rgba(0, 0, 0, 0.5);
+
+		--color-accent-red: #FF7A54;
+		--color-accent-blue: #86B3FF;
+		--color-accent-yellow: #FFBD69;
+		--color-accent-cyan: #0EA5D9;
+		--color-on-accent: #FFFFFF;
+
+		--color-selection-bg: #1F4657;
+		--color-selection-text: #EDEDED;
+
+		/* Take the edge off bright photos on a dark page */
+		--media-dim: brightness(0.86) contrast(1.02);
 	}
 
 	* {
@@ -57,6 +125,7 @@ const { title } = Astro.props;
 		scroll-behavior: smooth;
 		overflow-x: hidden;
 		-webkit-font-smoothing: antialiased;
+		transition: background-color 0.25s ease, color 0.25s ease;
 	}
 
 	body {
@@ -86,8 +155,12 @@ const { title } = Astro.props;
 	}
 
 	::selection {
-		background-color: #D6F4FF;
-		color: var(--color-dark);
+		background-color: var(--color-selection-bg);
+		color: var(--color-selection-text);
+	}
+
+	img, video {
+		filter: var(--media-dim);
 	}
 
 	.container {
