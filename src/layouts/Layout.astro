@@ -76,6 +76,11 @@ const { title } = Astro.props;
 		--container-width: 1000px;
 	}
 
+	/* Project detail pages use a white background in light mode */
+	:root:not([data-theme="dark"]):has(main.project-page) {
+		--color-bg: #FFFFFF;
+	}
+
 	:root[data-theme="dark"] {
 		color-scheme: dark;
 
