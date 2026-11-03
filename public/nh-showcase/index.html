@@ -15,6 +15,9 @@
   .layer.on{opacity:1;z-index:2}
   .layer img{position:absolute;left:0;top:0;width:100%;height:auto;display:block;transform-origin:50% 0;
     transition:transform 0s linear;user-select:none;-webkit-user-drag:none}
+  .pin{position:absolute;left:0;top:0;width:100%;aspect-ratio:1600/33;overflow:hidden;z-index:1;display:none;pointer-events:none}
+  .layer.tall .pin{display:block}
+  .pin img{transform:none!important;transition:none!important}
   .layer.kb img{animation:kb 1.1s cubic-bezier(.2,.7,.2,1) both}
   @keyframes kb{from{scale:1.018;filter:blur(1.5px)}to{scale:1;filter:blur(0)}}
   .cap{position:absolute;left:clamp(10px,2%,24px);bottom:clamp(10px,2.4%,24px);z-index:5;display:flex;align-items:center;gap:10px;
@@ -53,8 +56,8 @@
 <body>
 <div class="nh" id="nh">
   <div class="stage" id="stage" aria-roledescription="carousel" aria-label="namuh Max prototype showcase">
-    <div class="layer" id="L0"><img alt=""></div>
-    <div class="layer" id="L1"><img alt=""></div>
+    <div class="layer" id="L0"><img alt=""><div class="pin"><img alt="" aria-hidden="true"></div></div>
+    <div class="layer" id="L1"><img alt=""><div class="pin"><img alt="" aria-hidden="true"></div></div>
     <div class="intro" id="intro"><div class="t"><div class="n" id="iN"></div><div class="k" id="iK"></div><div class="e" id="iE"></div></div></div>
     <div class="cap" id="cap"><span class="dot"></span><span id="cK"></span><span class="en" id="cE"></span><span class="ct" id="cC"></span></div>
     <button class="play" id="play" aria-label="Pause"><svg viewBox="0 0 16 16" id="pIcon"></svg></button>
@@ -84,6 +87,7 @@ async function go(i, user){
   await load(s.src);
   idx=i; top^=1; const lay=L[top], img=lay.querySelector('img');
   img.style.transition='none'; img.style.transform='translateY(0)'; img.src=s.src; img.alt=`${CH[s.ci].ko} ${s.fi+1}`;
+  lay.querySelector('.pin img').src=s.src; lay.classList.toggle('tall', s.h>0.6); // keep the app top bar fixed while tall frames pan
   lay.classList.remove('kb'); void lay.offsetWidth; if(!RM && (s.fi===0||!prev||prev.ci!==s.ci)) lay.classList.add('kb');
   lay.classList.add('on'); L[top^1].classList.remove('on');
   // tall frame: pan down after a beat
