@@ -1,0 +1,60 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+// Animated walkthrough built from the Figma prototype frames (public/nh-showcase).
+const showcaseUrl = '/portfolio/nh-showcase/index.html';
+---
+
+<Layout title="NH namuh Max | Haeri Kim">
+	<Nav />
+	<main class="project-page">
+		<div class="container">
+			<div class="project-info reveal">
+				<h1>NH namuh Max</h1>
+				<p class="description">A Desktop Trading Interface Prototype for NH Investment &amp; Securities</p>
+			</div>
+			<div class="meta-grid reveal">
+				<div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">NH Investment &amp; Securities</span></div>
+				<div class="meta-item"><span class="meta-label">Team</span><span class="meta-value">KAIST</span></div>
+				<div class="meta-item"><span class="meta-label">Year</span><span class="meta-value">2026</span></div>
+				<div class="meta-item"><span class="meta-label">Work Scope</span><span class="meta-value">UI Design, Prototyping</span></div>
+			</div>
+			<div class="project-content reveal">
+				<p class="project-description">namuh Max is a desktop (1920×1080) trading experience for NH Investment &amp; Securities' namuh platform. The prototype walks through five core flows: searching for stocks and browsing the market board, reading a stock's detail page, managing a watchlist, digging into financials such as dividends and investment indicators, and following related news.</p>
+				<h3 class="section-title">Prototype Walkthrough</h3>
+				<div class="showcase-embed">
+					<iframe src={showcaseUrl} title="namuh Max prototype walkthrough" loading="lazy"></iframe>
+				</div>
+				<p class="embed-note">
+					Click a chapter bar to jump, use ← → to step, space to pause. <a href={showcaseUrl} target="_blank" rel="noopener">Open full screen ↗</a>
+				</p>
+			</div>
+		</div>
+	</main>
+	<Footer />
+</Layout>
+
+<style>
+	.project-page { padding-top: 7rem; padding-bottom: 4rem; }
+	.project-info { margin-bottom: 3rem; }
+	.project-info h1 { font-family: var(--font); font-size: 2.5rem; font-weight: 700; color: var(--color-text); letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+	.description { font-size: 1.1rem; color: var(--color-text-secondary); line-height: 1.6; }
+	.meta-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background-color: var(--color-border); border: 1px solid var(--color-border); border-radius: 8px; overflow: hidden; margin-bottom: 3rem; }
+	.meta-item { display: flex; flex-direction: column; gap: 0.4rem; padding: 1.5rem; background-color: var(--color-bg); }
+	.meta-label { font-family: var(--font); font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-muted); }
+	.meta-value { font-family: var(--font-body); font-size: 0.95rem; color: var(--color-text); font-weight: 500; }
+	.project-content { display: flex; flex-direction: column; gap: 2rem; }
+	.showcase-embed { position: relative; width: 100%; aspect-ratio: 16/10.4; border-radius: 12px; overflow: hidden; background: #0E0E10; }
+	.showcase-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+	.embed-note { font-size: 0.8rem; color: var(--color-text-muted); margin-top: -1rem; }
+	.embed-note a { color: var(--color-text-secondary); text-decoration: underline; text-underline-offset: 3px; }
+	.embed-note a:hover { color: var(--color-text); }
+	.project-description { font-size: 0.82rem; color: var(--color-text-secondary); line-height: 1.7; }
+	.section-title { font-family: var(--font); font-size: 1.25rem; font-weight: 600; color: var(--color-text); margin-top: 1rem; margin-bottom: 1rem; }
+	@media (max-width: 768px) {
+		.project-info h1 { font-size: 1.75rem; }
+		.meta-grid { grid-template-columns: repeat(2, 1fr); }
+	}
+</style>
