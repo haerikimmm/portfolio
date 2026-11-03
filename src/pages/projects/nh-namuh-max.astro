@@ -22,34 +22,28 @@ const showcaseUrl = '/portfolio/nh-showcase/index.html';
 				<div class="meta-item"><span class="meta-label">Work Scope</span><span class="meta-value">AI Interaction</span></div>
 			</div>
 			<div class="project-content reveal">
-				<p class="project-description">namuh Max is the desktop web trading system (WTS) of NH Investment &amp; Securities. On a mobile trading app, one screen holds one task. A WTS lays many panels side by side, with an unfamiliar layout and dense information. One-time onboarding tours miss the moment people actually need help: guidance shown all at once is forgotten by the time it matters, and on a dense screen it feels like pressure rather than learning. We proposed progressive onboarding, help that steps in at the moment of need with the level of help that moment calls for. Because this means recognizing what the user is doing in real time, choosing when to step in, and adjusting how much to say, we designed it as an AI interaction rather than a static tutorial. Our target users were active mobile traders with no WTS experience.</p>
+				<p class="project-description">A one-time tour can't help new users of a dense desktop trading system (WTS) at the moment they actually get stuck. We designed <strong>progressive onboarding</strong>: AI that steps in when help is needed, with just the right amount of it.</p>
 
-				<h3 class="section-title">Workshop: Finding Where AI Should Step In</h3>
-				<p class="project-description">Seven participants explored a live WTS across five scenarios (home screen, stock details, watchlist, balance and portfolio, community) using a Chrome extension we built. Whenever they got stuck, they left an in-situ comment, and the extension generated three UI alternatives on the spot at three levels of AI intervention: <strong>A, subtle</strong> (inline labels and tooltips), <strong>B, contextual</strong> (a single callout or opt-in explanation), and <strong>C, proactive</strong> (step-by-step guidance and checklists). Participants picked one and explained why.</p>
-				<p class="project-description">The 105 comments fell into seven problem types, including unfamiliar financial terms, no benchmark for reading numbers, wanting the cause behind price moves, linking news and disclosures to their own holdings, wanting judgment tailored to their own assets, and information overload. Across about 300 alternatives, proactive intervention (C) was chosen most often in most scenarios. The exception was checking one's own portfolio, where subtle help (A) led: "The final decision should be mine."</p>
+				<div class="process-grid">
+					<div class="process-card">
+						<span class="process-label">Workshop · n=7</span>
+						<p>Participants explored a live WTS and picked from AI help generated on the spot. Proactive help was preferred.</p>
+					</div>
+					<div class="process-card">
+						<span class="process-label">Prototype</span>
+						<p>5 task flows × 2 forms of AI help: anchored to the screen element, or fixed in one place.</p>
+					</div>
+					<div class="process-card">
+						<span class="process-label">User Study · n=10</span>
+						<p>All preferred an expandable accordion. 60% preferred help anchored next to its target.</p>
+					</div>
+				</div>
 
-				<h3 class="section-title">Prototype: An AI Intervention Protocol</h3>
-				<p class="project-description">We turned the findings into a four-step protocol: <strong>detect</strong> intervention conditions from screen data, <strong>select</strong> and prioritize the items that meet them, <strong>generate</strong> layered content with the source data attached, and <strong>place</strong> it next to the element it explains. We applied the protocol to five task flows (search, layout change, reading trends, company and financial data, related news), each in two forms: <strong>A, context-distributed</strong>, with sequential dialogs that move next to their targets, and <strong>B, centralized</strong>, a fixed accordion in the corner. That made ten prototypes.</p>
+				<h3 class="section-title">Key Insight</h3>
+				<p class="project-description">People didn't resist AI help. They resisted too much of it at once, and wanted to pull more detail when they were ready.</p>
 
-				<h3 class="section-title">User Study</h3>
-				<p class="project-description">Ten participants compared A and B in a counterbalanced test. People who were skeptical of AI help in the pre-interview became positive after the tasks. Every participant preferred the accordion structure, because it previews the whole answer at once and lets them go back to earlier steps. Placement split 60/40 in favor of anchoring: an anchored panel ties each explanation to what it describes, while a fixed position is more predictable.</p>
-
-				<h3 class="section-title">Key Insights</h3>
-				<ul class="insight-list">
-					<li><strong>Help must match the stage of exploration.</strong> People struggled with terms, benchmarks, and personal relevance more than with finding features, so the AI has to interpret information, not just explain buttons.</li>
-					<li><strong>Proactive help works when it keeps the flow.</strong> The proactive option won when it left the current screen intact and added context, comparison criteria, and a next step.</li>
-					<li><strong>Resistance was to volume, not to intervention.</strong> What participants pushed back on was information dumped up front. They asked for a pull structure: "Don't give it all at once. Give me more when I want to see more."</li>
-				</ul>
-
-				<h3 class="section-title">Proposal: The Anchored Accordion</h3>
-				<p class="project-description">The final design combines A's anchoring with B's accordion. An AI indicator first signals that help is available in the relevant area. Clicking it opens a collapsed accordion that expands on demand, anchored to its target but free to move or close. The interaction shifts from push to pull: the system signals, the user asks, the detail expands, and the user, not the system, decides how much to see.</p>
-
-				<h3 class="section-title">Reflection</h3>
-				<ul class="insight-list">
-					<li><strong>Desktop and mobile need different AI interactions.</strong> On mobile, screens are narrow and sequential, so an AI step becomes part of the flow. On desktop, many panels share one screen, so the question is where and how to place the AI without breaking what people already do.</li>
-					<li><strong>Next: personalization.</strong> The prototypes ran on fixed flows. Tailoring intervention to real data such as viewing history, holdings, and investor type is the next step.</li>
-					<li><strong>Generated alternatives as a research method.</strong> Generating UI options in the moment let participants react to concrete designs instead of describing needs in the abstract, a method we would reuse in future UX research.</li>
-				</ul>
+				<h3 class="section-title">Proposal: Anchored Accordion</h3>
+				<p class="project-description">An AI indicator signals that help is available next to the relevant area. One click opens a collapsed accordion that expands only as far as the user wants.</p>
 
 				<h3 class="section-title">Prototype Walkthrough</h3>
 				<div class="showcase-embed">
@@ -82,10 +76,15 @@ const showcaseUrl = '/portfolio/nh-showcase/index.html';
 	.project-description { font-size: 0.82rem; color: var(--color-text-secondary); line-height: 1.7; }
 	.section-title { font-family: var(--font); font-size: 1.25rem; font-weight: 600; color: var(--color-text); margin-top: 1rem; margin-bottom: 1rem; }
 	.project-description strong, .insight-list strong { color: var(--color-text); font-weight: 600; }
+	.process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+	.process-card { display: flex; flex-direction: column; gap: 0.5rem; padding: 1.25rem; border: 1px solid var(--color-border); border-radius: 8px; }
+	.process-label { font-family: var(--font); font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-muted); }
+	.process-card p { font-size: 0.82rem; color: var(--color-text-secondary); line-height: 1.6; margin: 0; }
 	.insight-list { display: flex; flex-direction: column; gap: 0.75rem; padding-left: 1.1rem; margin: 0; }
 	.insight-list li { font-size: 0.82rem; color: var(--color-text-secondary); line-height: 1.7; }
 	@media (max-width: 768px) {
 		.project-info h1 { font-size: 1.75rem; }
 		.meta-grid { grid-template-columns: repeat(2, 1fr); }
+		.process-grid { grid-template-columns: 1fr; }
 	}
 </style>
