@@ -22,14 +22,19 @@ const neuripsUrl = 'https://neurips.cc/virtual/2026/loc/sydney/160645';
 	<main class="project-page">
 		<div class="container">
 			<div class="project-info reveal">
-				<h1>Transcendent Contact</h1>
-				<p class="description">A Catalogue for an AI-Fabricated Exhibition That Reframes Hallucination as Creative Capacity</p>
-				<div class="award">
-					<span class="award-tag">Accepted</span>
-					<span class="award-text">NeurIPS 2026 Creative AI Track · Artwork</span>
-					<a href={openreviewUrl} target="_blank" rel="noopener">OpenReview ↗</a>
-					<a href={neuripsUrl} target="_blank" rel="noopener">NeurIPS ↗</a>
+				<div class="project-heading">
+					<h1>Transcendent Contact</h1>
+					<p class="description">An AI-Fabricated Exhibition Catalogue Reframing Hallucination as Creative Capacity</p>
 				</div>
+				<aside class="wall-label" aria-label="NeurIPS 2026 acceptance">
+					<span class="red-dot" aria-hidden="true"></span>
+					<p class="wl-title">Transcendent Contact: Expanding Creative Agency Through AI Hallucination</p>
+					<p class="wl-note">Accepted to the NeurIPS 2026 Creative AI Track as an Artwork.</p>
+					<p class="wl-links">
+						<a href={openreviewUrl} target="_blank" rel="noopener">OpenReview entry</a>
+						<a href={neuripsUrl} target="_blank" rel="noopener">Conference listing</a>
+					</p>
+				</aside>
 			</div>
 			<div class="meta-grid reveal">
 				<div class="meta-item"><span class="meta-label">Course</span><span class="meta-value">Design Project 2026</span></div>
@@ -38,11 +43,11 @@ const neuripsUrl = 'https://neurips.cc/virtual/2026/loc/sydney/160645';
 				<div class="meta-item"><span class="meta-label">Models</span><span class="meta-value">Gemini Imagen 3, Nano Banana Pro, Kling 3.0, GPT-5.5, Gemini Pro, Claude Sonnet 4.5</span></div>
 			</div>
 			<div class="project-content reveal">
-				<p class="project-description">Transcendent Contact is a 182-page hardcover catalogue for a museum exhibition that never took place. Its palindromic title, SAW / WAS, divides the book in two. The first half follows the conventions of museum documentation — artist biographies, artwork captions, installation photographs of eighteen works — and presents them as genuine holdings, letting readers build real responses to objects that were never made. Midway through, the book reveals the exhibition as a fiction and turns to the longer history of human and machine hallucination. A closing archive opens up the production itself: the chat logs, the visual errors discarded along the way, and the categories used to group the works.</p>
+				<p class="project-description">Transcendent Contact is a 182-page hardcover catalogue for a museum exhibition that never happened. Its palindromic title, SAW / WAS, divides the book in two. The first half presents artist biographies, captions, and installation photographs of eighteen works as genuine holdings, inviting real responses to unmade objects. Midway, it reveals the fiction and explores the history of human and machine hallucination. A closing archive documents production through chat logs, discarded visual errors, and categories used to group the works.</p>
 				<h3 class="section-title">Catalogue</h3>
 				<img src="/portfolio/images/courses/transcendent-contact-spreads.jpg" alt="Spreads from the Transcendent Contact catalogue" class="hero-image" />
-				<p class="project-description">We treated AI hallucination as a design partner rather than a defect to be corrected. Generative models produced the artworks, the artist personas, the technical specifications, and the curatorial justifications; when a model filled a gap with something unforeseen, we kept it as a creative alternative instead of fixing it. From what came back we derived nine potentials of hallucination — Comforting, Humanizing, Preparing, Immersing, Escaping, Bonding, Restoring, Redefining, and Inspiring — and organized the exhibition around them.</p>
-				<p class="project-description">Authorship stays deliberately unstable throughout. Agency moves along a sequence of generation, curation, encounter, revelation, and re-reading, circulating among creator, tool, curator, and reader rather than settling with any one of them. The unverified, we argue, can function as a form of reality — and hallucination, understood as a capacity rather than an error, widens the conditions under which creative work can happen.</p>
+				<p class="project-description">We treated AI hallucination as a design partner, not a defect. Generative models produced artworks, artist personas, technical specifications, and curatorial justifications. Unexpected gap-filling became creative alternatives rather than corrections. From these outputs, we derived nine potentials of hallucination and organized the exhibition around them: Comforting, Humanizing, Preparing, Immersing, Escaping, Bonding, Restoring, Redefining, and Inspiring.</p>
+				<p class="project-description">Authorship remains deliberately unstable. Agency moves through generation, curation, encounter, revelation, and re-reading, circulating among creator, tool, curator, and reader. We argue that the unverified can function as reality, and that hallucination, understood as capacity rather than error, expands the conditions for creative work.</p>
 				<div class="book-embed">
 					<iframe
 						src={catalogueUrl}
@@ -76,15 +81,22 @@ const neuripsUrl = 'https://neurips.cc/virtual/2026/loc/sydney/160645';
 
 <style>
 	.project-page { padding-top: 7rem; padding-bottom: 4rem; }
-	.project-info { margin-bottom: 3rem; }
+	.project-info { margin-bottom: 3rem; display: grid; grid-template-columns: minmax(0, 1fr) 15.5rem; column-gap: 3.5rem; align-items: start; }
+	/* Acceptance shown as a museum wall label hung beside the title, echoing the catalogue's museum documentation */
+	.wall-label { position: relative; padding: 1.1rem 1.15rem 1rem; background: var(--color-card); border: 1px solid var(--color-border-subtle); border-radius: 2px; box-shadow: 0 1px 0 var(--color-divider), 0 10px 18px -14px var(--color-shadow); }
+	.wall-label p { margin: 0; color: var(--color-text); }
+	.project-page .wall-label .wl-title { font-family: var(--font); font-size: 0.8rem; font-weight: 700; line-height: 1.35; letter-spacing: -0.01em; padding-right: 0.75rem; }
+	.project-page .wall-label .wl-note { margin-top: 0.45rem; font-size: 0.76rem; line-height: 1.5; color: var(--color-text-secondary); }
+	.project-page .wall-label .wl-links { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; margin-top: 0.8rem; font-size: 0.74rem; line-height: 1.4; }
+	.wall-label a { color: var(--color-text); text-decoration: underline; text-decoration-color: var(--color-text-faint); text-underline-offset: 3px; transition: text-decoration-color 0.2s ease; }
+	.wall-label a:hover { text-decoration-color: currentColor; }
+	.wall-label a:focus-visible { outline: 2px solid var(--color-accent-cyan); outline-offset: 2px; border-radius: 1px; }
+	/* Gallery red dot: the sticker that marks a work as taken */
+	.red-dot { position: absolute; top: -0.45rem; right: -0.45rem; width: 1.05rem; height: 1.05rem; border-radius: 50%; background: var(--color-accent-red); box-shadow: inset 0 -1px 0 rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.18); animation: dot-press 0.45s cubic-bezier(.2,.9,.3,1.3) 1.1s both; }
+	@keyframes dot-press { from { transform: scale(1.6) rotate(-20deg); opacity: 0; } to { transform: scale(1) rotate(0); opacity: 1; } }
+	@media (prefers-reduced-motion: reduce) { .red-dot { animation: none; } }
 	.project-info h1 { font-family: var(--font); font-size: 2.5rem; font-weight: 700; color: var(--color-text); letter-spacing: -0.03em; margin-bottom: 0.75rem; }
 	.description { font-size: 1.1rem; color: var(--color-text-secondary); line-height: 1.6; }
-	.award { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem; margin-top: 1.25rem; padding: 0.55rem 1rem 0.55rem 0.55rem; border: 1px solid var(--color-border); border-radius: 999px; font-size: 0.85rem; }
-	.award-tag { font-family: var(--font); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.25rem 0.6rem; border-radius: 999px; background: var(--color-text); color: var(--color-bg); }
-	.award-text { font-weight: 600; color: var(--color-text); }
-	.award a { color: var(--color-text-secondary); text-decoration: underline; text-underline-offset: 3px; }
-	.award a:hover { color: var(--color-text); }
-	@media (max-width: 768px) { .award { border-radius: 12px; } }
 	.meta-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background-color: var(--color-border); border: 1px solid var(--color-border); border-radius: 8px; overflow: hidden; margin-bottom: 3rem; }
 	.meta-item { display: flex; flex-direction: column; gap: 0.4rem; padding: 1.5rem; background-color: var(--color-bg); }
 	.meta-label { font-family: var(--font); font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-muted); }
@@ -102,6 +114,8 @@ const neuripsUrl = 'https://neurips.cc/virtual/2026/loc/sydney/160645';
 	.section-title { font-family: var(--font); font-size: 1.25rem; font-weight: 600; color: var(--color-text); margin-top: 1rem; margin-bottom: 1rem; }
 	@media (max-width: 768px) {
 		.project-info h1 { font-size: 1.75rem; }
+		.project-info { grid-template-columns: 1fr; row-gap: 1.75rem; }
+		.wall-label { max-width: 20rem; }
 		.meta-grid { grid-template-columns: repeat(2, 1fr); }
 		/* Narrow screens: the viewer drops to single-page, so give it portrait room */
 		.book-embed { aspect-ratio: 3/4; min-height: 420px; }
